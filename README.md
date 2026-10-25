@@ -9,16 +9,6 @@
 
 ---
 
-## 👋 About me
-
-- 🔭 Currently working on: **something awesome**
-- 🌱 Currently learning: **what's next**
-- 🤝 Looking to collaborate on: **open source & side projects**
-- 💬 Ask me about: **your favorite topics here**
-- ⚡ Fun fact: **add one that is yours**
-
----
-
 ## 🛠️ Tech stack
 
 <div align="center">

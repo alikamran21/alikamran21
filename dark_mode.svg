@@ -1,81 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="545" viewBox="0 0 1000 545" font-family="Consolas, 'Liberation Mono', Menlo, 'DejaVu Sans Mono', monospace">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="508" viewBox="0 0 1000 508" font-family="Consolas, 'Liberation Mono', Menlo, 'DejaVu Sans Mono', monospace">
 <title>Ali Kamran</title>
 <style>
-.art{fill:#c9d1d9;font-size:9px;white-space:pre}
+.art{fill:#c9d1d9;font-size:15px;white-space:pre}
 .info{font-size:13.5px;white-space:pre}
 .text{fill:#c9d1d9} .key{fill:#ffa657} .val{fill:#a5d6ff} .dots{fill:#616e7f}
 </style>
-<rect width="1000" height="545" rx="15" fill="#161b22" stroke="#30363d"/>
-<text class="art" x="20" y="30.0" textLength="267.5" lengthAdjust="spacing" xml:space="preserve">                                    .i0-```,;;``''</text>
-<text class="art" x="20" y="40.4" textLength="299.6" lengthAdjust="spacing" xml:space="preserve">                               .'-:,`'','``,,,:',;:::;;,</text>
-<text class="art" x="20" y="50.8" textLength="369.1" lengthAdjust="spacing" xml:space="preserve">                         ',:~~-;~-:'-''''`:,;:;.'`,=-::=1tf~,,`'``;:'</text>
-<text class="art" x="20" y="61.2" textLength="374.5" lengthAdjust="spacing" xml:space="preserve">                      ':;;`~-::;:`:,'.   .':-i;:,,~~+-;;-,;.''``''';-,</text>
-<text class="art" x="20" y="71.6" textLength="379.8" lengthAdjust="spacing" xml:space="preserve">                  `-,:::-,~`1i'',`;` ..``.:`=+--;`,'`...'.,,,'',...,:1`</text>
-<text class="art" x="20" y="82.0" textLength="379.8" lengthAdjust="spacing" xml:space="preserve">              `:'~,,``,~,-t~t;:':--~'''.:,;=~-:,```.''..  .'`'..'. ``;,</text>
-<text class="art" x="20" y="92.4" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">            ;G1=,+,,:.``.-i:i:'.;'-=~-;:+:..``..''''. .... . .. . .';~=i~;,,`</text>
-<text class="art" x="20" y="102.8" textLength="433.3" lengthAdjust="spacing" xml:space="preserve">            f=~-+t-: .:+-`i-L:=`.`''':+==i~:;;;`''''''``''..'. . .`-~,,~1~:`:+--:</text>
-<text class="art" x="20" y="113.2" textLength="444.0" lengthAdjust="spacing" xml:space="preserve">           '+,,-1t+i  `''``i,1`,:``,:,`,``;`''''.`'..'..'.....',:~~;```:++`'',`,~;,</text>
-<text class="art" x="20" y="123.6" textLength="454.7" lengthAdjust="spacing" xml:space="preserve">          ,~`';;,-=-`''``''',:;:::,,:,:`'....'''...''''''...',;-~~:.'..'`;;'.'.'`:,:'</text>
-<text class="art" x="20" y="134.0" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">      ~+-:,`  ``'''`;;~-:-:;:,```,,:`'''.'... '.....`''``'''..'``:,-:.. .,-:``. .`::</text>
-<text class="art" x="20" y="144.4" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">    :==~:-~i~   '';`''''''.....`''            ',,`'``'`,:,`... .'``:::`'.''`,''..':;</text>
-<text class="art" x="20" y="154.8" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">   .=-~,`,-=-`.  .,;-;,'.. ',-:'.     `;;```;=11=+=i;~;;;-:-`'''':;~:`'''.'``''..'.+</text>
-<text class="art" x="20" y="165.2" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">    =:``'::;-,,'.':;,'..''':'...  .`=iLG00GGCLGCLfLLLff++1+1+;''`..,`,:,:```''...',:</text>
-<text class="art" x="20" y="175.6" textLength="454.7" lengthAdjust="spacing" xml:space="preserve">    :;`::`,:;:,`,;~:`    .'``~--i+1iL8@@8G0888GGGCCLL1fLfGLLL+;,;:;:;;~,:'.'``..'',`'</text>
-<text class="art" x="20" y="186.0" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">     i-,''''...''.''',``:;=itLLC0008@@@@8880000GCCCLL1tLLCCfLti~-,:`;~-,.'''...'''';</text>
-<text class="art" x="20" y="196.4" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">     1:,,1-'.'.''..-1i111i1tfGG808888880000CG0GGCCLLLLtLCCLLfii-:;;:;:'''.... ..'``~</text>
-<text class="art" x="20" y="206.8" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">     1=:,;`.','.  -00GGCG00000G0000880000GGG0GGGCCCLCLCCLLfLf+;,'..'``...........';-</text>
-<text class="art" x="20" y="217.2" textLength="449.4" lengthAdjust="spacing" xml:space="preserve">   `;=;;,`..''.   t@@8GGGGGGGGCGG00000000GG00GGCLCCLCCLLLLft1i-`. . .'...'....''`,:,</text>
-<text class="art" x="20" y="227.6" textLength="444.0" lengthAdjust="spacing" xml:space="preserve">    :t~;,`.....   =0@0GCGGCCCCGGGGG080080G000GGGGGCLLCLLLft1ii+;.     .......'''',:</text>
-<text class="art" x="20" y="238.0" textLength="438.7" lengthAdjust="spacing" xml:space="preserve">     +=::'.....   ,080GGGCCCCCGG0G0000G0000880GGCGCCLLCLft1111tt+:     ......'`,`,</text>
-<text class="art" x="20" y="248.4" textLength="433.3" lengthAdjust="spacing" xml:space="preserve">     i+~;::`''.   .f00GCCCCCGC0000000088@8@@@@8000000880GCLti11tLf+     ..'.'`',:</text>
-<text class="art" x="20" y="258.8" textLength="428.0" lengthAdjust="spacing" xml:space="preserve">     +:     ',`'   180GGGGCG00088888888088@@@8800GGCCLLtLffLffitttf+    ......',</text>
-<text class="art" x="20" y="269.2" textLength="428.0" lengthAdjust="spacing" xml:space="preserve">              ,,.. 0@88088000888@80000GCLLf+~~~:`.''`'.'.''`~1t1tttf;       .`::</text>
-<text class="art" x="20" y="279.6" textLength="428.0" lengthAdjust="spacing" xml:space="preserve">               ,`. @@@@8CGf+==t1i+1fLCCf1=:       .'',:;:;-;--~i11tf;'    .-t=~f</text>
-<text class="art" x="20" y="290.0" textLength="433.3" lengthAdjust="spacing" xml:space="preserve">                ,. 8@f;''.   .    .;iC0G1-`'''. .~,   ;:``;~i1fLLffti'  ''=LGffG'</text>
-<text class="art" x="20" y="300.4" textLength="428.0" lengthAdjust="spacing" xml:space="preserve">                 . C8i~=;,.       .,G@@@8L=ift=ifCGCCf=;:~tG00GCCLLLG+  '`-tLCL0</text>
-<text class="art" x="20" y="310.8" textLength="428.0" lengthAdjust="spacing" xml:space="preserve">                  .t@G1,.`-L=+tt1+1L@@@@8CLCCLLLLfftttfC008800GCCLffC0= ',.`=LG1</text>
-<text class="art" x="20" y="321.2" textLength="422.6" lengthAdjust="spacing" xml:space="preserve">                  .f@@8GLt11111tCCCG8@@8GCCCCCCG08888@@@@88800GGCLLtff1  it-f@0</text>
-<text class="art" x="20" y="331.6" textLength="422.6" lengthAdjust="spacing" xml:space="preserve">                   8@@@888888880GCCC088GCCCfLffC08@88888800GGGCCCff1i1+ `-+i@8i</text>
-<text class="art" x="20" y="342.0" textLength="422.6" lengthAdjust="spacing" xml:space="preserve">                   0@@@888@@888GCLC0088@80GCGC1tC08800000GGGCCCLLff=~=;,,:1811.</text>
-<text class="art" x="20" y="352.4" textLength="417.3" lengthAdjust="spacing" xml:space="preserve">                   +@@@88888880CC88@@@@@@0G8@@G+CCCG00GGGCLLLftiti~;-=-;~==+0=</text>
-<text class="art" x="20" y="362.8" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">                    @@@@880000GL00GG@@@8C+~~;--`10GCCGCLLffftti+==;-+=~:;f08f</text>
-<text class="art" x="20" y="373.2" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">                    i@@@8GGCGCLCC-'.;~=='.,~;,:-f8GGCCLLfttt1i=~===++=+, ,-,'</text>
-<text class="art" x="20" y="383.6" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">                     L@8GCCCCLLC0GffL+`..,1fCGGG00CCLCCLfftti===+ii1+=i:   .'</text>
-<text class="art" x="20" y="394.0" textLength="417.3" lengthAdjust="spacing" xml:space="preserve">                      88GCCLftCGG088@@8LtG@@@800GGCftCGCfttti==+111i==+-:  .`.</text>
-<text class="art" x="20" y="404.4" textLength="417.3" lengthAdjust="spacing" xml:space="preserve">                      :@0GCLLGCLC88GCLCCGtttt11i1i=;;+tffttii++it1i=~~~=~   ''</text>
-<text class="art" x="20" y="414.8" textLength="417.3" lengthAdjust="spacing" xml:space="preserve">                       =@0GLLLf=;;..`::,;``:;,,:;;-+tfft111+=+1tti=~---++  .`.</text>
-<text class="art" x="20" y="425.2" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">                        f@0GLfffLLf1fCCGG8@@@8G00LfC80GLi+~==+i1+=~-;;=ii..',</text>
-<text class="art" x="20" y="435.6" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">                         L@0CftG888GCL08000GLt111fCGCLffi====+i=~;;::-=+1`  .</text>
-<text class="art" x="20" y="446.0" textLength="406.6" lengthAdjust="spacing" xml:space="preserve">                          f@GLfLCCCCft+~:,,::-itCCLfftfft1=+i+~;:,`,;~=+1` .</text>
-<text class="art" x="20" y="456.4" textLength="411.9" lengthAdjust="spacing" xml:space="preserve">                           ~80CLLCLLLf1++i1ffLCGGCCLftfft1~-~:,,'`:;-~=i1, `,</text>
-<text class="art" x="20" y="466.8" textLength="422.6" lengthAdjust="spacing" xml:space="preserve">                             f880GCCCCG088@888880GGCLff1+-:,,`''`:;-~~~+i``~=i,</text>
-<text class="art" x="20" y="477.2" textLength="433.3" lengthAdjust="spacing" xml:space="preserve">                              ,f8@00G00088@88@88GCCL1+-;`''''``,::;--~~=+,~--=i='</text>
-<text class="art" x="20" y="487.6" textLength="438.7" lengthAdjust="spacing" xml:space="preserve">                                '+080GGGG8@0GGLfi1+;,''''''``,:;;;--~~t0f-;;--~+1-</text>
-<text class="art" x="20" y="498.0" textLength="444.0" lengthAdjust="spacing" xml:space="preserve">                                   111ii+~~;::,``'....'''`,:::;;;---=C@0-;;;---~=+=</text>
-<text class="art" x="20" y="508.4" textLength="460.1" lengthAdjust="spacing" xml:space="preserve">                                   +Ci-:,`.......'''''`,,:::;;----~+8@@+:;;------~~=:'</text>
-<text class="art" x="20" y="518.8" textLength="476.1" lengthAdjust="spacing" xml:space="preserve">                                  .~0Lfffi=;:```,,,,,::::;;;-~~~--1@@@C:;;--------~~=i1+;</text>
+<rect width="1000" height="508" rx="15" fill="#161b22" stroke="#30363d"/>
+<text class="art" x="20" y="30.0" textLength="279.0" lengthAdjust="spacing" xml:space="preserve">                     .:-..::...</text>
+<text class="art" x="20" y="46.5" textLength="369.0" lengthAdjust="spacing" xml:space="preserve">               .::::::....::..----=:.....</text>
+<text class="art" x="20" y="63.0" textLength="378.0" lengthAdjust="spacing" xml:space="preserve">           ..::---:::.  ..--:::.........::</text>
+<text class="art" x="20" y="79.5" textLength="396.0" lengthAdjust="spacing" xml:space="preserve">        ---:..:-=-.:::::::::...         .::.</text>
+<text class="art" x="20" y="96.0" textLength="441.0" lengthAdjust="spacing" xml:space="preserve">       -===-..::--:..::--::.......    ..::-=-:::.</text>
+<text class="art" x="20" y="112.5" textLength="459.0" lengthAdjust="spacing" xml:space="preserve">      .:::--....:::::::... ..  ...  .::::..::....:.</text>
+<text class="art" x="20" y="129.0" textLength="459.0" lengthAdjust="spacing" xml:space="preserve">   :---.  ..::.......       ........  .::...... ...</text>
+<text class="art" x="20" y="145.5" textLength="459.0" lengthAdjust="spacing" xml:space="preserve">  :-::--. .::......  .:====+++++===-:...::..... ...</text>
+<text class="art" x="20" y="162.0" textLength="459.0" lengthAdjust="spacing" xml:space="preserve">   ::.::..::.  .:-==+*%@@%%%%###**##+-:::-:.... ...</text>
+<text class="art" x="20" y="178.5" textLength="459.0" lengthAdjust="spacing" xml:space="preserve">   ::::.   :===+*#%%@@@@%%%%%###*###*=-:::..    ...</text>
+<text class="art" x="20" y="195.0" textLength="450.0" lengthAdjust="spacing" xml:space="preserve">  .-::... .*%%%%%%%%%%%%%%%%%######*+-.  .      .:</text>
+<text class="art" x="20" y="211.5" textLength="450.0" lengthAdjust="spacing" xml:space="preserve">   --.    .+%%%%#%%%%%%%%%%%%%####**+=:        ...</text>
+<text class="art" x="20" y="228.0" textLength="441.0" lengthAdjust="spacing" xml:space="preserve">   --...   =%%%%%%%%%@@@@@@@%%%%%%#****=.     ...</text>
+<text class="art" x="20" y="244.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve">        .. =%%%%%%%@%%%%##*+=------=++**=.    ..</text>
+<text class="art" x="20" y="261.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve">         ..=%*+=-----+##+:.  ...:::-=+**+:  :=+=</text>
+<text class="art" x="20" y="277.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve">           =#=:.. ...+%@#+++=**+==+#%%##*=..:+#+</text>
+<text class="art" x="20" y="294.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve">           =%#++***##%@@%###%%%%%@@%%%##**-.-=#-</text>
+<text class="art" x="20" y="310.5" textLength="423.0" lengthAdjust="spacing" xml:space="preserve">           =@@@@@@%%%%@@%%###%@@@@%%%##*+=::=*+</text>
+<text class="art" x="20" y="327.0" textLength="423.0" lengthAdjust="spacing" xml:space="preserve">           :%@@@@@%%%@@@%##*+#%%%####*+=-=-=+*-</text>
+<text class="art" x="20" y="343.5" textLength="414.0" lengthAdjust="spacing" xml:space="preserve">            +@@%%%##==+=::--=#%###**+=====-.::</text>
+<text class="art" x="20" y="360.0" textLength="396.0" lengthAdjust="spacing" xml:space="preserve">             *%####%%%#+=#%%%%####**+=+++=-.</text>
+<text class="art" x="20" y="376.5" textLength="396.0" lengthAdjust="spacing" xml:space="preserve">              #%###*+++++=======***+++++===:</text>
+<text class="art" x="20" y="393.0" textLength="405.0" lengthAdjust="spacing" xml:space="preserve">              -#%#***+*########%#*+==++=--=-.</text>
+<text class="art" x="20" y="409.5" textLength="405.0" lengthAdjust="spacing" xml:space="preserve">               -####%#*+===+*###**+===-::-==.</text>
+<text class="art" x="20" y="426.0" textLength="423.0" lengthAdjust="spacing" xml:space="preserve">                 +#%######%%%%##*+=-:..:--==::.</text>
+<text class="art" x="20" y="442.5" textLength="441.0" lengthAdjust="spacing" xml:space="preserve">                  :+%%%%@@@%%#*=-:...::--===--=-.</text>
+<text class="art" x="20" y="459.0" textLength="450.0" lengthAdjust="spacing" xml:space="preserve">                     +*+==--::.....:::--=*#+---==:</text>
+<text class="art" x="20" y="475.5" textLength="477.0" lengthAdjust="spacing" xml:space="preserve">                     =*+=:......::::---=#@*------=--:</text>
 <text class="info" x="548" y="32.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">ali@kamran </tspan><tspan class="dots">-------------------------------------------</tspan></text>
 <text class="info" x="548" y="51.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. OS:</tspan><tspan class="dots"> ................ </tspan><tspan class="val">Windows 11, Android, Ubuntu CLI</tspan></text>
-<text class="info" x="548" y="71.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Device:</tspan><tspan class="dots"> ................... </tspan><tspan class="val">Samsung Galaxy S25 Ultra</tspan></text>
-<text class="info" x="548" y="90.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Education:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">BS, 3rd Year @ GIKI</tspan></text>
-<text class="info" x="548" y="110.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Role.DevOps:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">DevOps Engineer @ InvoiceMate</tspan></text>
-<text class="info" x="548" y="129.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Role.CTO:</tspan><tspan class="dots"> ......................... </tspan><tspan class="val">CTO @ Foxy Audit</tspan></text>
-<text class="info" x="548" y="149.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. IDE:</tspan><tspan class="dots"> ....................................... </tspan><tspan class="val">VS Code</tspan></text>
-<text class="info" x="548" y="168.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
-<text class="info" x="548" y="188.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Lang.Programming:</tspan><tspan class="dots"> ... </tspan><tspan class="val">Assembly, C, C++, Java, Python</tspan></text>
-<text class="info" x="548" y="207.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Lang.Computer:</tspan><tspan class="dots"> ........... </tspan><tspan class="val">HTML, CSS, JSON, and more</tspan></text>
-<text class="info" x="548" y="227.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Lang.Real:</tspan><tspan class="dots"> ........................... </tspan><tspan class="val">English, Urdu</tspan></text>
-<text class="info" x="548" y="246.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
-<text class="info" x="548" y="266.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Hobbies.Software:</tspan><tspan class="dots"> ...... </tspan><tspan class="val">Game Dev, UEFN (coffeebean)</tspan></text>
-<text class="info" x="548" y="285.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Hobbies.Other:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">Gaming, Reading</tspan></text>
-<text class="info" x="548" y="305.0" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
-<text class="info" x="548" y="324.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Contact </tspan><tspan class="dots">--------------------------------------------</tspan></text>
-<text class="info" x="548" y="344.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Email:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">alikamran1223@gmail.com</tspan></text>
-<text class="info" x="548" y="363.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. LinkedIn:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">ali-kamran-182b3033b</tspan></text>
-<text class="info" x="548" y="383.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Discord:</tspan><tspan class="dots"> .............................. </tspan><tspan class="val">coffee_.bean</tspan></text>
-<text class="info" x="548" y="402.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
-<text class="info" x="548" y="422.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- GitHub Stats </tspan><tspan class="dots">---------------------------------------</tspan></text>
-<text class="info" x="548" y="441.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Repos:</tspan><tspan class="dots"> ...... </tspan><tspan class="val">9 {Contributed: 4}</tspan><tspan class="dots"> | </tspan><tspan class="key">Stars:</tspan><tspan class="dots"> ........ </tspan><tspan class="val">0</tspan></text>
-<text class="info" x="548" y="461.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Commits:</tspan><tspan class="dots"> ................... </tspan><tspan class="val">274</tspan><tspan class="dots"> | </tspan><tspan class="key">Followers:</tspan><tspan class="dots"> .... </tspan><tspan class="val">0</tspan></text>
+<text class="info" x="548" y="71.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Education:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">Cyber Security, 3rd Year @ GIKI</tspan></text>
+<text class="info" x="548" y="90.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Role.DevOps:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">DevOps Engineer @ InvoiceMate</tspan></text>
+<text class="info" x="548" y="110.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Role.CTO:</tspan><tspan class="dots"> ......................... </tspan><tspan class="val">CTO @ Foxy Audit</tspan></text>
+<text class="info" x="548" y="129.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. IDE:</tspan><tspan class="dots"> ....................................... </tspan><tspan class="val">VS Code</tspan></text>
+<text class="info" x="548" y="149.0" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
+<text class="info" x="548" y="168.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Lang.Programming:</tspan><tspan class="dots"> ... </tspan><tspan class="val">Assembly, C, C++, Java, Python</tspan></text>
+<text class="info" x="548" y="188.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Lang.Computer:</tspan><tspan class="dots"> ........... </tspan><tspan class="val">HTML, CSS, JSON, and more</tspan></text>
+<text class="info" x="548" y="207.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Lang.Real:</tspan><tspan class="dots"> ........................... </tspan><tspan class="val">English, Urdu</tspan></text>
+<text class="info" x="548" y="227.0" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
+<text class="info" x="548" y="246.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Hobbies.Software:</tspan><tspan class="dots"> ...... </tspan><tspan class="val">Game Dev, UEFN (coffeebean)</tspan></text>
+<text class="info" x="548" y="266.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Hobbies.Other:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">Gaming, Reading</tspan></text>
+<text class="info" x="548" y="285.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
+<text class="info" x="548" y="305.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Contact </tspan><tspan class="dots">--------------------------------------------</tspan></text>
+<text class="info" x="548" y="324.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Email:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">alikamran1223@gmail.com</tspan></text>
+<text class="info" x="548" y="344.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. LinkedIn:</tspan><tspan class="dots"> ..................... </tspan><tspan class="val">ali-kamran-182b3033b</tspan></text>
+<text class="info" x="548" y="363.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Discord:</tspan><tspan class="dots"> .............................. </tspan><tspan class="val">coffee_.bean</tspan></text>
+<text class="info" x="548" y="383.0" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
+<text class="info" x="548" y="402.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- GitHub Stats </tspan><tspan class="dots">---------------------------------------</tspan></text>
+<text class="info" x="548" y="422.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Repos:</tspan><tspan class="dots"> ...... </tspan><tspan class="val">9 {Contributed: 4}</tspan><tspan class="dots"> | </tspan><tspan class="key">Stars:</tspan><tspan class="dots"> ........ </tspan><tspan class="val">0</tspan></text>
+<text class="info" x="548" y="441.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Commits:</tspan><tspan class="dots"> ................... </tspan><tspan class="val">274</tspan><tspan class="dots"> | </tspan><tspan class="key">Followers:</tspan><tspan class="dots"> .... </tspan><tspan class="val">0</tspan></text>
 </svg>

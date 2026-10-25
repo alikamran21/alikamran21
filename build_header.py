@@ -18,8 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 INFO = [
     ("hdr", "ali@kamran"),
     ("kv", "OS", "Windows 11, Android, Ubuntu CLI"),
-    ("kv", "Device", "Samsung Galaxy S25 Ultra"),
-    ("kv", "Education", "BS, 3rd Year @ GIKI"),
+    ("kv", "Education", "Cyber Security, 3rd Year @ GIKI"),
     ("kv", "Role.DevOps", "DevOps Engineer @ InvoiceMate"),
     ("kv", "Role.CTO", "CTO @ Foxy Audit"),
     ("kv", "IDE", "VS Code"),
@@ -52,13 +51,13 @@ THEMES = {
 W = 1000
 PAD = 20
 ART_X = PAD
-ART_CW = 5.35         # px per art character
-ART_LH = 10.4         # px per art line
+ART_CW = 9.0          # px per art character
+ART_LH = 16.5         # px per art line
 INFO_X = 548
 INFO_COLS = 54
 INFO_CW = 8.0
 INFO_LH = 19.5
-ART_FS = 9
+ART_FS = 15
 INFO_FS = 13.5
 
 STATS_FILE = os.path.join(HERE, "stats.json")
@@ -101,14 +100,14 @@ def fetch_stats(user, token):
     parts = []
     for y in range(start, now.year + 1):
         parts.append(f'y{y}: contributionsCollection(from:"{y}-01-01T00:00:00Z", '
-                     f'to:"{y}-12-31T23:59:59Z"){{ totalCommitContributions }}')
+                     f'to:"{y}-12-31T23:59:59Z"){{ totalCommitContributions restrictedContributionsCount }}')
     commits = gql(token, "query($login:String!){ user(login:$login){ "
                   + " ".join(parts) + " }}", {"login": user})["user"]
     return {
         "repos": base["repositories"]["totalCount"],
         "contributed": base["repositoriesContributedTo"]["totalCount"],
         "stars": sum(n["stargazerCount"] for n in base["repositories"]["nodes"]),
-        "commits": sum(v["totalCommitContributions"] for v in commits.values()),
+        "commits": sum(v["totalCommitContributions"] + v["restrictedContributionsCount"] for v in commits.values()),
         "followers": base["followers"]["totalCount"],
     }
 

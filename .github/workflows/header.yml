@@ -27,7 +27,7 @@ jobs:
 
       - name: Refresh stats and rebuild SVGs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
           USER_NAME: ${{ github.repository_owner }}
         run: python build_header.py --fetch
 
