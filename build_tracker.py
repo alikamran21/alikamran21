@@ -9,17 +9,13 @@ from xml.sax.saxutils import escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# How long (seconds) one loop of the "boxes eaten" bar takes. The bar is its own
-# animation, so set this to roughly the length of your Pac-Man game to keep them in step.
-PACMAN_SECONDS = 30
-FRAMES = 24
-
 THEMES = {
-    "dark": dict(bg="#161b22", tile="#0d1117", border="#30363d", text="#c9d1d9",
-                 muted="#8b949e", accent="#39d353", accent2="#0e4429", pac="#facc15"),
-    "light": dict(bg="#f6f8fa", tile="#ffffff", border="#d0d7de", text="#24292f",
-                  muted="#57606a", accent="#216e39", accent2="#aceebb", pac="#ca8a04"),
+    "dark": dict(bg="#0d1117", border="#30363d", text="#e6edf3", muted="#8b949e",
+                 bar="#2ea043", bar_dim="#1f6f33", track="#21262d"),
+    "light": dict(bg="#ffffff", border="#d0d7de", text="#1f2328", muted="#57606a",
+                  bar="#1a7f37", bar_dim="#8ad3a0", track="#eaeef2"),
 }
+FONT = "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
 FALLBACK_COLORS = ["#58a6ff", "#f78166", "#d2a8ff", "#3fb950", "#e3b341", "#79c0ff"]
 
 CALENDAR_QUERY = """
@@ -137,139 +133,89 @@ def rng(r):
     return f"{short(r[0])} - {short(r[1])}" if r else "-"
 
 
-def pac_progress(c, total, x, y, w, animated):
-    """Loading bar that fills as Pac-Man 'eats' the boxes, with a live counter."""
-    D = PACMAN_SECONDS
-    hold = 0.9  # the bar finishes at 90% of the loop and holds for the rest
-    o = [f'<text x="{x}" y="{y}" font-size="12" fill="{c["muted"]}">Pac-Man progress</text>',
-         f'<text x="{x + w}" y="{y}" font-size="12" text-anchor="end" fill="{c["muted"]}">boxes eaten</text>']
-    by, bh = y + 12, 16
-    o.append(f'<rect x="{x}" y="{by}" width="{w}" height="{bh}" rx="8" fill="{c["tile"]}" stroke="{c["border"]}"/>')
-    # pellets along the track
-    for i in range(1, 40):
-        px = x + 14 + (w - 28) * i / 40
-        o.append(f'<circle cx="{px:.1f}" cy="{by + bh / 2}" r="1.6" fill="{c["muted"]}" opacity="0.35"/>')
-
-    if animated:
-        o.append(f'<rect x="{x}" y="{by}" width="0" height="{bh}" rx="8" fill="{c["accent"]}" opacity="0.9">'
-                 f'<animate attributeName="width" values="0;{w};{w}" keyTimes="0;{hold};1" dur="{D}s" repeatCount="indefinite"/></rect>')
-        o.append(f'<g transform="translate({x},{by + bh / 2})">'
-                 f'<animateTransform attributeName="transform" type="translate" '
-                 f'values="{x},{by + bh / 2};{x + w - 8},{by + bh / 2};{x + w - 8},{by + bh / 2}" '
-                 f'keyTimes="0;{hold};1" dur="{D}s" repeatCount="indefinite"/>'
-                 f'<circle r="11" fill="{c["pac"]}"/>'
-                 f'<polygon points="0,0 12,-7 12,7" fill="{c["bg"]}">'
-                 f'<animate attributeName="points" values="0,0 12,-7 12,7;0,0 12,-1 12,1;0,0 12,-7 12,7" dur="0.5s" repeatCount="indefinite"/></polygon>'
-                 f'<circle cx="2" cy="-5" r="1.6" fill="{c["bg"]}"/></g>')
-        # counter frames
-        for k in range(FRAMES):
-            val = round(total * k / (FRAMES - 1))
-            t0, t1 = hold * k / FRAMES, hold * (k + 1) / FRAMES
-            if k == 0:
-                vals, keys = "1;0;0", f"0;{t1:.4f};1"
-            elif k == FRAMES - 1:
-                vals, keys = "0;1;1", f"0;{t0:.4f};1"
-            else:
-                vals, keys = "0;1;0;0", f"0;{t0:.4f};{t1:.4f};1"
-            op = "1" if k == 0 else "0"
-            o.append(f'<text x="{x + w - 80}" y="{y}" font-size="12" font-weight="bold" text-anchor="end" '
-                     f'fill="{c["accent"]}" opacity="{op}">{fmt(val)} / {fmt(total)}'
-                     f'<animate attributeName="opacity" calcMode="discrete" values="{vals}" keyTimes="{keys}" '
-                     f'dur="{D}s" repeatCount="indefinite"/></text>')
-    else:  # static preview
-        o.append(f'<rect x="{x}" y="{by}" width="{w}" height="{bh}" rx="8" fill="{c["accent"]}" opacity="0.9"/>')
-        o.append(f'<text x="{x + w - 80}" y="{y}" font-size="12" font-weight="bold" text-anchor="end" '
-                 f'fill="{c["accent"]}">{fmt(total)} / {fmt(total)}</text>')
-    return o
-
-
-def render(theme, stats, animated=True):
+def render(theme, stats):
     c = THEMES[theme]
     a = analyse(stats["calendar"])
     year_total = stats.get("year_total", a["total"])
-    W, H = 1000, 568
-    font = "Consolas, 'Liberation Mono', Menlo, 'DejaVu Sans Mono', monospace"
+    W, H = 1000, 452
+    pad = 28
     o = [f'<?xml version="1.0" encoding="UTF-8"?>',
-         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{font}">',
+         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">',
          "<title>Contribution tracker</title>",
-         f'<rect width="{W}" height="{H}" rx="15" fill="{c["bg"]}" stroke="{c["border"]}"/>',
-         f'<text x="24" y="34" font-size="15" font-weight="bold" fill="{c["text"]}">Contribution tracker</text>']
+         f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="6" fill="{c["bg"]}" stroke="{c["border"]}"/>']
 
-    # Pac-Man progress
-    o += pac_progress(c, a["active_days"], 24, 62, W - 48, animated)
+    def hline(y):
+        o.append(f'<line x1="0" y1="{y}" x2="{W}" y2="{y}" stroke="{c["border"]}"/>')
 
-    # three big tiles
+    def vline(x, y1, y2):
+        o.append(f'<line x1="{x}" y1="{y1}" x2="{x}" y2="{y2}" stroke="{c["border"]}"/>')
+
+    # row 1: totals and streaks
     all_time = stats.get("all_time_total", year_total)
     joined = stats.get("joined")
-    since = (_date(joined).strftime("%b ") + f"{_date(joined).day}, {_date(joined).year} - Present") if joined \
-        else f"{fmt(a['active_days'])} active days (last year)"
-    tiles = [
-        ("Total contributions", fmt(all_time), since),
-        ("Current streak", f"{a['current']} days", rng(a["current_range"])),
-        ("Longest streak", f"{a['longest']} days", rng(a["longest_range"])),
-    ]
-    gap, x0, y0, th = 12, 24, 112, 92
-    tw = (W - 48 - gap * 2) / 3
-    for i, (label, big, sub) in enumerate(tiles):
-        x = x0 + i * (tw + gap)
-        o.append(f'<rect x="{x:.1f}" y="{y0}" width="{tw:.1f}" height="{th}" rx="10" fill="{c["tile"]}" stroke="{c["border"]}"/>')
-        o.append(f'<text x="{x + 18:.1f}" y="{y0 + 26}" font-size="12" fill="{c["muted"]}">{escape(label)}</text>')
-        o.append(f'<text x="{x + 18:.1f}" y="{y0 + 61}" font-size="30" font-weight="bold" fill="{c["accent"]}">{escape(big)}</text>')
-        o.append(f'<text x="{x + 18:.1f}" y="{y0 + 80}" font-size="11" fill="{c["muted"]}">{escape(sub)}</text>')
+    since = (f"{_date(joined).strftime('%b')} {_date(joined).day}, {_date(joined).year} - present") if joined \
+        else f"{fmt(a['active_days'])} active days in the last year"
+    cols = [("Total contributions", fmt(all_time), since),
+            ("Current streak", f"{a['current']} days", rng(a["current_range"])),
+            ("Longest streak", f"{a['longest']} days", rng(a["longest_range"]))]
+    cw = W / 3
+    for i, (label, big, sub) in enumerate(cols):
+        x = i * cw + pad
+        o.append(f'<text x="{x:.1f}" y="40" font-size="12" fill="{c["muted"]}">{escape(label)}</text>')
+        o.append(f'<text x="{x:.1f}" y="76" font-size="28" font-weight="600" fill="{c["text"]}">{escape(big)}</text>')
+        o.append(f'<text x="{x:.1f}" y="98" font-size="12" fill="{c["muted"]}">{escape(sub)}</text>')
+        if i:
+            vline(i * cw, 20, 106)
+    hline(124)
 
-    # stats panel (left) and languages panel (right)
-    py, ph = 220, 152
-    lw = 464
-    o.append(f'<rect x="24" y="{py}" width="{lw}" height="{ph}" rx="10" fill="{c["tile"]}" stroke="{c["border"]}"/>')
-    o.append(f'<text x="42" y="{py + 28}" font-size="13" font-weight="bold" fill="{c["text"]}">GitHub stats</text>')
-    rows = [("Total stars earned", fmt(stats.get("stars", 0))),
-            ("Commits (last year)", fmt(stats.get("year_commits", "n/a"))),
-            ("Total PRs", fmt(stats.get("prs", "n/a"))),
-            ("Total issues", fmt(stats.get("issues", "n/a"))),
-            ("Contributed to (last year)", fmt(stats.get("contributed_repos", stats.get("contributed", "n/a"))))]
+    # row 2: activity numbers and languages
+    mid = W / 2
+    vline(mid, 124, 268)
+    o.append(f'<text x="{pad}" y="154" font-size="13" font-weight="600" fill="{c["text"]}">Activity</text>')
+    rows = [("Stars earned", fmt(stats.get("stars", 0))),
+            ("Commits, last year", fmt(stats.get("year_commits", "n/a"))),
+            ("Pull requests", fmt(stats.get("prs", "n/a"))),
+            ("Issues", fmt(stats.get("issues", "n/a"))),
+            ("Repositories contributed to", fmt(stats.get("contributed_repos", stats.get("contributed", "n/a"))))]
     for i, (k, v) in enumerate(rows):
-        yy = py + 54 + i * 21
-        o.append(f'<text x="42" y="{yy}" font-size="12" fill="{c["muted"]}">{escape(k)}</text>')
-        o.append(f'<text x="{24 + lw - 18}" y="{yy}" font-size="12" font-weight="bold" text-anchor="end" fill="{c["accent"]}">{escape(v)}</text>')
+        y = 180 + i * 18
+        o.append(f'<text x="{pad}" y="{y}" font-size="12" fill="{c["muted"]}">{escape(k)}</text>')
+        o.append(f'<text x="{mid - pad}" y="{y}" font-size="12" font-weight="600" text-anchor="end" fill="{c["text"]}">{escape(v)}</text>')
 
-    rx0 = 24 + lw + 12
-    rw = W - 24 - rx0
-    o.append(f'<rect x="{rx0}" y="{py}" width="{rw}" height="{ph}" rx="10" fill="{c["tile"]}" stroke="{c["border"]}"/>')
-    o.append(f'<text x="{rx0 + 18}" y="{py + 28}" font-size="13" font-weight="bold" fill="{c["text"]}">Most used languages</text>')
+    lx = mid + pad
+    lw = W - pad - lx
+    o.append(f'<text x="{lx}" y="154" font-size="13" font-weight="600" fill="{c["text"]}">Languages</text>')
     langs = stats.get("languages") or []
     if langs:
         tot = sum(l[2] for l in langs) or 1
-        bx, by2, bw = rx0 + 18, py + 42, rw - 36
-        o.append(f'<clipPath id="lc-{theme}"><rect x="{bx}" y="{by2}" width="{bw}" height="10" rx="5"/></clipPath>')
-        cx = bx
+        o.append(f'<clipPath id="lc-{theme}"><rect x="{lx}" y="166" width="{lw}" height="8" rx="4"/></clipPath>')
+        x = lx
         for i, (name, col, size) in enumerate(langs):
-            seg = bw * size / tot
-            o.append(f'<rect x="{cx:.1f}" y="{by2}" width="{seg + 0.5:.1f}" height="10" fill="{col or FALLBACK_COLORS[i % 6]}" clip-path="url(#lc-{theme})"/>')
-            cx += seg
+            seg = lw * size / tot
+            o.append(f'<rect x="{x:.1f}" y="166" width="{seg + 0.6:.1f}" height="8" fill="{col or FALLBACK_COLORS[i % 6]}" clip-path="url(#lc-{theme})"/>')
+            x += seg
         for i, (name, col, size) in enumerate(langs):
-            colx = bx + (i % 2) * (bw / 2)
-            yy = py + 82 + (i // 2) * 24
-            o.append(f'<circle cx="{colx + 5:.1f}" cy="{yy - 4}" r="5" fill="{col or FALLBACK_COLORS[i % 6]}"/>')
-            o.append(f'<text x="{colx + 18:.1f}" y="{yy}" font-size="12" fill="{c["text"]}">{escape(name)} {100 * size / tot:.1f}%</text>')
-    else:
-        o.append(f'<text x="{rx0 + 18}" y="{py + 70}" font-size="12" fill="{c["muted"]}">Appears after the next stats run</text>')
+            colx = lx + (i % 3) * (lw / 3)
+            y = 200 + (i // 3) * 22
+            o.append(f'<circle cx="{colx + 4:.1f}" cy="{y - 4}" r="4" fill="{col or FALLBACK_COLORS[i % 6]}"/>')
+            o.append(f'<text x="{colx + 14:.1f}" y="{y}" font-size="12" fill="{c["text"]}">{escape(name)} '
+                     f'<tspan fill="{c["muted"]}">{100 * size / tot:.1f}%</tspan></text>')
+    hline(268)
 
-    # monthly bars
-    cx, cy, cw, ch = 24, 396, W - 48, 150
-    o.append(f'<text x="{cx}" y="{cy}" font-size="12" fill="{c["muted"]}">Contributions per month (last 12 months)</text>')
+    # row 3: contributions per month
+    o.append(f'<text x="{pad}" y="298" font-size="13" font-weight="600" fill="{c["text"]}">Contributions per month</text>')
     months = a["months"]
     peak = max(v for _, v in months) or 1
-    slot = cw / len(months)
-    bw2 = slot * 0.56
-    base = cy + ch
+    left, width, base, maxh = pad, W - 2 * pad, 420, 96
+    slot = width / len(months)
+    bw = slot * 0.5
     for i, ((yr, mo), v) in enumerate(months):
-        bh = max(3, (v / peak) * (ch - 50)) if v else 3
-        x = cx + i * slot + (slot - bw2) / 2
-        op = 1 if v == peak else (0.35 if v == 0 else 0.55 + 0.45 * v / peak)
-        label = datetime.date(yr, mo, 1).strftime("%b")
-        o.append(f'<rect x="{x:.1f}" y="{base - bh - 22:.1f}" width="{bw2:.1f}" height="{bh:.1f}" rx="4" fill="{c["accent"]}" opacity="{op:.2f}"/>')
-        o.append(f'<text x="{x + bw2 / 2:.1f}" y="{base - bh - 28:.1f}" font-size="11" text-anchor="middle" fill="{c["text"]}">{fmt(v)}</text>')
-        o.append(f'<text x="{x + bw2 / 2:.1f}" y="{base - 6}" font-size="11" text-anchor="middle" fill="{c["muted"]}">{label}</text>')
+        h = max(2, v / peak * maxh)
+        x = left + i * slot + (slot - bw) / 2
+        fill = c["bar"] if v == peak else c["bar_dim"]
+        o.append(f'<rect x="{x:.1f}" y="{base - 18 - h:.1f}" width="{bw:.1f}" height="{h:.1f}" rx="2" fill="{fill}"/>')
+        o.append(f'<text x="{x + bw / 2:.1f}" y="{base - 24 - h:.1f}" font-size="11" text-anchor="middle" fill="{c["muted"]}">{fmt(v)}</text>')
+        o.append(f'<text x="{x + bw / 2:.1f}" y="{base - 2}" font-size="11" text-anchor="middle" fill="{c["muted"]}">{datetime.date(yr, mo, 1).strftime("%b")}</text>')
 
     o.append("</svg>")
     return "\n".join(o) + "\n"

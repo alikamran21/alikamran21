@@ -12,6 +12,7 @@ import sys
 import urllib.request
 from xml.sax.saxutils import escape
 
+import build_game
 import build_tracker
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -216,6 +217,7 @@ def main():
             f.write(render(theme, stats))
     print("wrote dark_mode.svg and light_mode.svg")
     build_tracker.build(stats)
+    build_game.build(stats)
 
 
 if __name__ == "__main__":
