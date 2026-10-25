@@ -1459,12 +1459,51 @@
     [
       "2026-10-25",
       1
+    ],
+    [
+      "2026-10-26",
+      0
     ]
   ],
-  "year_total": 5811,
-  "prs": 34,
+  "year_total": 5797,
+  "year_commits": 5752,
+  "joined": "2020-07-04",
+  "all_time_total": 5883,
+  "prs": 35,
   "issues": 0,
-  "reviews": 0,
+  "languages": [
+    [
+      "HTML",
+      "#e34c26",
+      430621
+    ],
+    [
+      "JavaScript",
+      "#f1e05a",
+      330409
+    ],
+    [
+      "C++",
+      "#f34b7d",
+      204344
+    ],
+    [
+      "Python",
+      "#3572A5",
+      191027
+    ],
+    [
+      "TypeScript",
+      "#3178c6",
+      185750
+    ],
+    [
+      "PLpgSQL",
+      "#336790",
+      78810
+    ]
+  ],
+  "contributed_repos": 52,
   "repos": 15,
   "contributed": 42,
   "stars": 0,
