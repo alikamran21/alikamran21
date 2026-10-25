@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - decorate_pacman.py
+      - easter_egg.png
+      - .github/workflows/pacman.yml
 
 jobs:
   generate:
@@ -15,10 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v4
+
       - name: Generate pacman-contribution-graph.svg
         uses: abozanona/pacman-contribution-graph@main
         with:
           github_user_name: ${{ github.repository_owner }}
+
+      - name: Add progress bar and easter egg
+        run: python3 decorate_pacman.py dist
 
       - name: Push SVGs to the output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
