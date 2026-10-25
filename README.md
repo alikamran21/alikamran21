@@ -34,13 +34,14 @@
 
 ---
 
-## 🐍 Contribution snake
+## 👻 Contribution Pac-Man
 
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/github-snake.svg">
-  <img alt="Contribution snake" src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/github-snake-dark.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg">
+  <img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg">
 </picture>
 
 </div>
