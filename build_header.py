@@ -51,13 +51,13 @@ THEMES = {
 W = 1000
 PAD = 20
 ART_X = PAD
-ART_CW = 9.0          # px per art character
-ART_LH = 16.5         # px per art line
+ART_CW = 5.35         # px per art character
+ART_LH = 10.4         # px per art line
 INFO_X = 548
 INFO_COLS = 54
 INFO_CW = 8.0
 INFO_LH = 19.5
-ART_FS = 15
+ART_FS = 9
 INFO_FS = 13.5
 
 STATS_FILE = os.path.join(HERE, "stats.json")
