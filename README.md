@@ -1,16 +1,10 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&section=header&text=Ali%20Kamran&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Developer%20%E2%80%A2%20Builder%20%E2%80%A2%20Always%20Learning&descAlignY=58&descSize=18" alt="header" />
-
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=800&color=A78BFA&center=true&vCenter=true&width=600&lines=Building+things+that+matter;Turning+coffee+into+code;Open+to+collaborate+on+cool+projects" alt="Typing SVG" />
+<a href="https://github.com/alikamran21">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="light_mode.svg">
+    <img alt="Ali Kamran" src="dark_mode.svg">
+  </picture>
 </a>
-
-<br/>
-
-<img src="https://komarev.com/ghpvc/?username=alikamran21&label=Profile%20views&color=7c3aed&style=for-the-badge" alt="views" />
-<img src="https://img.shields.io/github/followers/alikamran21?label=Followers&style=for-the-badge&logo=github&color=0ea5e9" alt="followers" />
-
 </div>
 
 ---
