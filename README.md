@@ -19,21 +19,6 @@
 
 ---
 
-## 📊 GitHub stats
-
-<div align="center">
-
-<img height="180" src="https://github-readme-stats.vercel.app/api?username=alikamran21&show_icons=true&theme=radical&hide_border=true&count_private=true" alt="stats" />
-<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=alikamran21&layout=compact&theme=radical&hide_border=true" alt="top langs" />
-
-<br/>
-
-<img src="https://streak-stats.demolab.com?user=alikamran21&theme=radical&hide_border=true" alt="streak" />
-
-</div>
-
----
-
 ## 👻 Contribution Pac-Man
 
 <div align="center">
