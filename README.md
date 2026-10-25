@@ -1,8 +1,6 @@
-<!-- Replace every alikamran21 with your GitHub username, and YOUR NAME with your name. -->
-
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&section=header&text=YOUR%20NAME&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Developer%20%E2%80%A2%20Builder%20%E2%80%A2%20Always%20Learning&descAlignY=58&descSize=18" alt="header" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&section=header&text=Ali%20Kamran&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Developer%20%E2%80%A2%20Builder%20%E2%80%A2%20Always%20Learning&descAlignY=58&descSize=18" alt="header" />
 
 <a href="https://git.io/typing-svg">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=800&color=A78BFA&center=true&vCenter=true&width=600&lines=Building+things+that+matter;Turning+coffee+into+code;Open+to+collaborate+on+cool+projects" alt="Typing SVG" />
@@ -52,16 +50,6 @@
 
 ---
 
-## 🏆 Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=alikamran21&theme=radical&no-frame=true&no-bg=true&margin-w=8&column=7" alt="trophies" />
-
-</div>
-
----
-
 ## 🐍 Contribution snake
 
 <div align="center">
@@ -69,8 +57,6 @@
 <img src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/github-snake-dark.svg" alt="snake" />
 
 </div>
-
-> The snake appears after the workflow in `.github/workflows/snake.yml` runs once.
 
 ---
 
@@ -81,7 +67,9 @@
 <!-- 1. Open https://skyline.github.com/alikamran21/2026 (change the year as you like)
      2. Download the image/PNG of your skyline, then add it to this repo as skyline.png
      3. It will show up below. -->
-<img src="./skyline.png" alt="My GitHub Skyline" width="85%" />
+<!-- <img src="./skyline.png" alt="My GitHub Skyline" width="85%" /> -->
+<!-- Remove the comment markers on the line above after uploading skyline.png -->
+<sub>Skyline coming soon 🏗️</sub>
 
 </div>
 
