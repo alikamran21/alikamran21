@@ -38,22 +38,10 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/github-snake-dark.svg" alt="snake" />
-
-</div>
-
----
-
-## 🏙️ My contribution skyline
-
-<div align="center">
-
-<!-- 1. Open https://skyline.github.com/alikamran21/2026 (change the year as you like)
-     2. Download the image/PNG of your skyline, then add it to this repo as skyline.png
-     3. It will show up below. -->
-<!-- <img src="./skyline.png" alt="My GitHub Skyline" width="85%" /> -->
-<!-- Remove the comment markers on the line above after uploading skyline.png -->
-<sub>Skyline coming soon 🏗️</sub>
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/github-snake.svg">
+  <img alt="Contribution snake" src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/github-snake-dark.svg">
+</picture>
 
 </div>
 
