@@ -44,6 +44,13 @@
   <img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg">
 </picture>
 
+<br/>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="tracker_light.svg">
+  <img alt="Contribution tracker" src="tracker_dark.svg">
+</picture>
+
 </div>
 
 ---

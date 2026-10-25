@@ -12,6 +12,8 @@ import sys
 import urllib.request
 from xml.sax.saxutils import escape
 
+import build_tracker
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ---------------------------------------------------------------- profile data
@@ -103,7 +105,9 @@ def fetch_stats(user, token):
                      f'to:"{y}-12-31T23:59:59Z"){{ totalCommitContributions restrictedContributionsCount }}')
     commits = gql(token, "query($login:String!){ user(login:$login){ "
                   + " ".join(parts) + " }}", {"login": user})["user"]
+    cal = build_tracker.fetch_calendar(gql, token, user)
     return {
+        **cal,
         "repos": base["repositories"]["totalCount"],
         "contributed": base["repositoriesContributedTo"]["totalCount"],
         "stars": sum(n["stargazerCount"] for n in base["repositories"]["nodes"]),
@@ -211,6 +215,7 @@ def main():
         with open(os.path.join(HERE, f"{theme}_mode.svg"), "w") as f:
             f.write(render(theme, stats))
     print("wrote dark_mode.svg and light_mode.svg")
+    build_tracker.build(stats)
 
 
 if __name__ == "__main__":
