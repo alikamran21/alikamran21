@@ -4,14 +4,14 @@ Usage: python decorate_pacman.py <dir containing pacman-contribution-graph*.svg>
 
 The game file already says, for every contribution box, the exact moment it is
 eaten (a fill animation on the box). This script:
-  1. plays the game SPEED times faster and stretches the loop by EXTRA seconds,
+  1. stretches the game to GAME seconds and adds EXTRA seconds to the loop,
      rescaling every animation so the game itself is untouched otherwise,
   2. puts the board in a card with the header's colours and monospace type
      (dimmer walls, month labels in the same font),
   3. adds a "boxes eaten" bar and counter driven by those same eat times,
   4. turns every bite into a "+N" pop-up with that day's real contribution
-     count, plus a chomp log line and a running score (the best day of the
-     year gets a bonus pop-up),
+     count, plus a chomp log of the last LOG bites and a running score (the
+     best day of the year gets a bonus pop-up),
   5. shows the easter egg (easter_egg.png) once the board is clear, then the
      loop restarts the game.
 If the file does not look the way this script expects, it is left untouched.
@@ -28,10 +28,12 @@ import sys
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SPEED = 0.8          # game time multiplier (0.8 = plays 1.25x faster than the generator)
+GAME = 280.0         # seconds the game itself lasts, whatever pace the generator picked
 EXTRA = 8.0          # seconds added to the loop for the easter egg
 POP = 1.2            # seconds a "+N" pop-up floats above an eaten box
 VERBS = ["chomp", "nom", "munch", "crunch"]
+LOG = 5              # lines in the chomp log
+SLIDE = 0.25         # seconds a log line takes to slide down / fade out
 
 CALENDAR_QUERY = """
 query($login:String!){ user(login:$login){ contributionsCollection{
@@ -160,7 +162,7 @@ def decorate(path, logo_b64, cal):
         return
     GW = int(m.group(1))
     d_old = int(d.group(1))
-    game = int(d_old * SPEED)
+    game = int(GAME * 1000)
     d_new = game + int(EXTRA * 1000)
     sc = game / d_new
 
@@ -193,8 +195,9 @@ def decorate(path, logo_b64, cal):
     times = [t * sc for t, _, _ in events]          # fractions of the new loop
     eaten = bites(events, cal)
     hud_y = by + bh + 30
-    log_y = hud_y + 19.5
-    H = int((log_y if eaten else hud_y) + PAD + 2)
+    log_hdr = hud_y + 19.5
+    log_y = [log_hdr + 19.5 * (j + 1) for j in range(LOG)]
+    H = int((log_y[-1] + 8 if eaten else hud_y) + PAD + 2)
     dur = f"{d_new}ms"
 
     def step(k):
@@ -246,26 +249,61 @@ def decorate(path, logo_b64, cal):
         o.append(text(W - PAD, hud_y, [("val", f"{k} / {total}")], anchor="end",
                       extra=f'opacity="{1 if k == 0 else 0}"').replace("</text>", step(k)))
 
-    # chomp log and score, plus a "+N" pop-up over every box as it is eaten
+    # score, chomp log (newest bite on top) and a "+N" pop-up over every box as it is eaten
     score = 0
     if eaten:
         best = max(n for _, n in eaten.values())
         life = POP * 1000 / d_new
+        entries = [(0.0, [("dots", "> "), ("text", "waiting for Pac-Man...")])]
         for k in range(total + 1):
-            if k == 0:
-                left = [("dots", "> "), ("text", "waiting for Pac-Man...")]
-            else:
+            if k:
                 _, col, row = events[k - 1]
                 day, n = eaten[(col, row)]
                 score += n
                 verb = "GULP" if n == best else VERBS[k % len(VERBS)]
                 when = f"{day:%a}, {day:%b} {day.day} {day.year}" if day else "?"
-                left = [("dots", "> "), ("key", verb), ("dots", " . "), ("text", when), ("dots", " "),
-                        ("val", f"+{n:,}")] + ([("key", " best day!")] if n == best else [])
+                left = [("dots", "> "), ("key", verb), ("dots", " . "), ("text", when)] +                     ([("key", " best day!")] if n == best else [])
+                val = f"+{n:,}"
+                entries.append((times[k - 1], left + [("dots", " " + "." * max(2, COLS - sum(len(t) for _, t in left) - len(val) - 2) + " "),
+                                                      ("val", val)]))
+            head = "- Chomp log "
             right = [("key", "Score:"), ("val", f" {score:,}")]
-            used = sum(len(t) for _, t in left + right)
-            parts = left + [("dots", " " + "." * max(2, COLS - used - 2) + " ")] + right
-            o.append(text(PAD, log_y, parts, extra=f'opacity="{1 if k == 0 else 0}"').replace("</text>", step(k)))
+            parts = [("text", head), ("dots", "-" * (COLS - len(head) - sum(len(t) for _, t in right) - 1) + " ")] + right
+            o.append(text(PAD, log_hdr, parts, extra=f'opacity="{1 if k == 0 else 0}"').replace("</text>", step(k)))
+
+        # each line enters at the top, slides one slot down per later bite, and fades out off the bottom
+        fade = [1, .8, .62, .46, .32]
+        slide = SLIDE * 1000 / d_new
+        at = [t for t, _ in entries]
+        for i, (t0, parts) in enumerate(entries):
+            def gap(j):  # time to move after bite j, never longer than half the gap to the next bite
+                return min(slide, (at[j + 1] - at[j]) / 2) if j + 1 < len(at) else slide
+            kt, ys, ops = [0.0], [log_y[0]], [1 if t0 == 0 else 0]
+            if t0 > 0:
+                kt += [t0, t0 + gap(i)]
+                ys += [log_y[0], log_y[0]]
+                ops += [0, 1]
+            for j in range(1, LOG + 1):
+                if i + j >= len(at):
+                    break
+                tj = at[i + j]
+                kt += [tj, tj + gap(i + j)]
+                if j < LOG:
+                    ys += [log_y[j - 1], log_y[j]]
+                    ops += [fade[j - 1], fade[j]]
+                else:
+                    ys += [log_y[-1], log_y[-1] + 6]
+                    ops += [fade[-1], 0]
+            kt.append(1.0)
+            ys.append(ys[-1])
+            ops.append(ops[-1])
+            kt = [min(1.0, k) for k in kt]
+            o.append(text(PAD, log_y[0], parts, extra=f'opacity="{ops[0]}"').replace(
+                "</text>",
+                f'<animate attributeName="y" dur="{dur}" repeatCount="indefinite" values="{";".join(fnum(y) for y in ys)}" '
+                f'keyTimes="{";".join(fnum(k) for k in kt)}"/>'
+                f'<animate attributeName="opacity" dur="{dur}" repeatCount="indefinite" values="{";".join(fnum(v) for v in ops)}" '
+                f'keyTimes="{";".join(fnum(k) for k in kt)}"/></text>'))
 
         for t, col, row in events:
             n = eaten[(col, row)][1]
