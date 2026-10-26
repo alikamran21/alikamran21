@@ -20,9 +20,11 @@ from xml.sax.saxutils import escape
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # timing, in seconds
-INPUT = 0.16          # per sideways move / rotation while steering a piece
-DROP = 0.09           # per row of gravity
-LOCK = 0.18           # pause after a piece locks
+INPUT = 0.38          # per sideways move / rotation while steering a piece
+DROP = 0.21           # per row of gravity
+LOCK = 0.45           # pause after a piece locks
+SLIDE = 0.3           # drop log lines sliding down a slot
+LOG = 5               # lines in the drop log
 FLASH = 1.6           # board flash once the graph is complete
 WIPE = 0.7            # rows clearing from the centre out
 END = 6.0             # "TETRIS!" screen before the restart
@@ -180,8 +182,9 @@ def render(theme, stats):
     bb = by + 7 * p                                    # bottom of the board
     month_y = bb + 16
     hud_y = month_y + 26
-    log_y = hud_y + LH
-    H = int(log_y + PAD + 4)
+    log_hdr = hud_y + LH
+    log_y = [log_hdr + LH * (j + 1) for j in range(LOG)]
+    H = int(log_y[-1] + 8 + PAD + 2)
 
     def cx(col):
         return PAD + col * p
@@ -332,26 +335,77 @@ def render(theme, stats):
              f'<animate attributeName="width" calcMode="discrete" dur="{dur}" repeatCount="indefinite" '
              f'values="{";".join(fnum(w) for w in widths)}" keyTimes="{";".join(fnum(k) for k in kts)}"/></rect>')
 
-    score = 0
     starts = [0] + [pc["land"] for pc in plan]
+    scores = [0]
+    for pc in plan:
+        scores.append(scores[-1] + pc["n"])
+    score = scores[-1]
+    head = "- Drop log "
     for k in range(total + 1):
         a, b = starts[k], (starts[k + 1] if k < total else T)
         o.append(text(W - PAD, hud_y, [("val", f"{k} / {total}")], anchor="end", extra=hidden(a))
                  .replace("</text>", shown(a, b) + "</text>"))
-        if k == 0:
-            left = [("dots", "> "), ("text", "insert coin...")]
+        right = [("key", "Score:"), ("val", f" {scores[k]:,}")]
+        dashes = "-" * (COLS - len(head) - sum(len(x) for _, x in right) - 1)
+        o.append(text(PAD, log_hdr, [("text", head), ("dots", dashes + " ")] + right, extra=hidden(a))
+                 .replace("</text>", shown(a, b) + "</text>"))
+
+    # drop log: newest piece on top with its shape drawn in front; older lines slide down,
+    # dim, and the oldest fades out below the last slot
+    mini, indent = 4.4, 4
+    fade = [1, .8, .62, .46, .32]
+    slide = SLIDE / T
+
+    def gap(j):  # time to slide after entry j, never longer than half the gap to the next one
+        return min(slide, (fr(starts[j + 1]) - fr(starts[j])) / 2) if j + 1 < len(starts) else slide
+
+    for i in range(total + 1):
+        if i == 0:
+            body = text(PAD, 0, [("dots", "> "), ("text", "insert coin...")])
         else:
-            pc = plan[k - 1]
-            score += pc["n"]
+            pc = plan[i - 1]
+            cells = sorted(norm(pc["cells"]))
+            h_ = max(y for _, y in cells) + 1
+            body = "".join(f'<rect x="{fnum(PAD + x * mini)}" y="{fnum(-4.5 - h_ * mini / 2 + y * mini)}" '
+                           f'width="{fnum(mini - 0.6)}" height="{fnum(mini - 0.6)}" fill="{c["pieces"][pc["kind"]]}"/>'
+                           for x, y in cells)
             d1, d2 = pc["days"][0], pc["days"][-1]
             when = f"{d1:%b} {d1.day}" + (f" - {d2:%b} {d2.day}" if d2 != d1 else "")
             name = f"{pc['kind']}-piece" if pc["kind"] != "small" else f"{len(pc['cells'])}-block"
-            left = [("dots", "> "), ("key", "drop"), ("dots", " . "), ("text", name), ("dots", " . "),
-                    ("text", when), ("dots", " . "), ("val", f"+{pc['n']:,}")]
-        right = [("key", "Score:"), ("val", f" {score:,}")]
-        used = sum(len(x) for _, x in left + right)
-        parts = left + [("dots", " " + "." * max(2, COLS - used - 2) + " ")] + right
-        o.append(text(PAD, log_y, parts, extra=hidden(a)).replace("</text>", shown(a, b) + "</text>"))
+            left = [("key", "drop"), ("dots", " . "), ("text", name), ("dots", " . "), ("text", when)]
+            val = f"+{pc['n']:,}"
+            dots = "." * max(2, COLS - indent - sum(len(x) for _, x in left) - len(val) - 2)
+            body += text(PAD + indent * CW, 0, left + [("dots", f" {dots} "), ("val", val)])
+        t0 = fr(starts[i])
+        kt, ys, ops = [0.0], [log_y[0]], [1 if i == 0 else 0]
+        if i:
+            kt += [t0, t0 + gap(i)]
+            ys += [log_y[0], log_y[0]]
+            ops += [0, 1]
+        for j in range(1, LOG + 1):
+            if i + j > total:
+                break
+            tj = fr(starts[i + j])
+            kt += [tj, tj + gap(i + j)]
+            if j < LOG:
+                ys += [log_y[j - 1], log_y[j]]
+                ops += [fade[j - 1], fade[j]]
+            else:
+                ys += [log_y[-1], log_y[-1] + 6]
+                ops += [fade[-1], 0]
+        end = min(1.0, kt[-1]) if i + LOG <= total else 1.0
+        kt.append(1.0)
+        ys.append(ys[-1])
+        ops.append(ops[-1])
+        kt = [min(1.0, k) for k in kt]
+        moves = ";".join(f"0,{fnum(y)}" for y in ys)
+        o.append(f'<g transform="translate(0,{fnum(log_y[0])})" opacity="{ops[0]}" {hidden(starts[i])}>'
+                 f'{shown(starts[i], end * T if end < 1 else T)}'
+                 f'<animateTransform attributeName="transform" type="translate" dur="{dur}" repeatCount="indefinite" '
+                 f'values="{moves}" keyTimes="{";".join(fnum(k) for k in kt)}"/>'
+                 f'<animate attributeName="opacity" dur="{dur}" repeatCount="indefinite" '
+                 f'values="{";".join(fnum(v) for v in ops)}" keyTimes="{";".join(fnum(k) for k in kt)}"/>'
+                 f'{body}</g>')
 
     # finale: the whole board flashes, then every row clears from the centre out
     span = W - 2 * PAD + 4
@@ -368,18 +422,11 @@ def render(theme, stats):
              f'<animate attributeName="x" calcMode="discrete" dur="{dur}" repeatCount="indefinite" values="{W / 2};{wx}" keyTimes="0;{wk}"/>'
              f'<animate attributeName="width" calcMode="discrete" dur="{dur}" repeatCount="indefinite" values="0;{ww}" keyTimes="0;{wk}"/></rect>')
 
-    # TETRIS! screen with the coffeebean easter egg
-    logo = os.path.join(HERE, "easter_egg.png")
-    img = ""
-    if os.path.exists(logo):
-        import base64
-        with open(logo, "rb") as f:
-            b64 = base64.b64encode(f.read()).decode()
-        img = f'<image href="data:image/png;base64,{b64}" x="{fnum(PAD + 40)}" y="{fnum(wt + 8)}" width="{fnum(bb - wt - 16)}" height="{fnum(bb - wt - 16)}"/>'
+    # TETRIS! screen
     mid = (wt + bb) / 2
     msg = [("dots", "> "), ("key", "year stacked"), ("dots", " . "), ("val", f"{total}"), ("text", " pieces"),
            ("dots", " . "), ("val", f"{score:,}"), ("text", " contributions"), ("dots", " . restarting_")]
-    o.append(f'<g display="none">{shown(wipe_end, T - 0.3)}{img}'
+    o.append(f'<g display="none">{shown(wipe_end, T - 0.3)}'
              f'<text x="{W / 2}" y="{fnum(mid + 4)}" text-anchor="middle" font-size="44" font-weight="700" '
              f'letter-spacing="14" fill="{c["key"]}">TETRIS!</text>'
              + text(W / 2, mid + 34, msg, anchor="middle") + "</g>")
