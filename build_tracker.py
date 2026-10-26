@@ -9,14 +9,18 @@ from xml.sax.saxutils import escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+# same palette and type as the header card (build_header.py), plus contribution greens
 THEMES = {
-    "dark": dict(bg="#0d1117", card="#161b22", border="#30363d", text="#e6edf3", muted="#8b949e",
-                 hi="#39d353", mid="#2ea043", lo="#1f6f33", flame="#ffa657", flame2="#ffd8a8"),
-    "light": dict(bg="#ffffff", card="#f6f8fa", border="#d0d7de", text="#1f2328", muted="#57606a",
-                  hi="#1a7f37", mid="#4ac26b", lo="#aceebb", flame="#bc4c00", flame2="#ffb77c"),
+    "dark": dict(bg="#161b22", text="#c9d1d9", key="#ffa657", val="#a5d6ff", dots="#616e7f",
+                 border="#30363d", track="#21262d", levels=["#0e4429", "#006d32", "#26a641", "#39d353"]),
+    "light": dict(bg="#f6f8fa", text="#24292f", key="#953800", val="#0a3069", dots="#a8b3c1",
+                  border="#d0d7de", track="#e1e4e8", levels=["#9be9a8", "#40c463", "#30a14e", "#216e39"]),
 }
-FONT = "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+FONT = "Consolas, 'Liberation Mono', Menlo, 'DejaVu Sans Mono', monospace"
 FALLBACK_COLORS = ["#58a6ff", "#f78166", "#d2a8ff", "#3fb950", "#e3b341", "#79c0ff"]
+# neofetch's colour strip: normal and bright rows
+PALETTE = [["#da3633", "#db6d28", "#d29922", "#238636", "#1b7c83", "#1f6feb", "#8957e5", "#6e7681"],
+           ["#ff7b72", "#ffa657", "#e3b341", "#3fb950", "#39c5cf", "#58a6ff", "#bc8cff", "#b1bac4"]]
 
 CALENDAR_QUERY = """
 query($login:String!){ user(login:$login){ contributionsCollection{
@@ -113,15 +117,9 @@ def analyse(calendar):
         cur += 1
         i -= 1
 
-    best = max(days, key=lambda x: x[1])
-    months = {}
-    for d, c in days:
-        months[(d.year, d.month)] = months.get((d.year, d.month), 0) + c
-    keys = sorted(months)[-12:]
-    return dict(total=sum(c for _, c in days), current=cur,
+    return dict(total=sum(c for _, c in days), days=len(days), current=cur,
                 current_range=(cur_start, cur_end) if cur else None,
-                longest=longest, longest_range=best_range, best_day=best,
-                months=[(k, months[k]) for k in keys],
+                longest=longest, longest_range=best_range, best_day=max(days, key=lambda x: x[1]),
                 active_days=sum(1 for _, c in days if c > 0))
 
 
@@ -133,9 +131,27 @@ def rng(r):
     return f"{short(r[0])} - {short(r[1])}" if r else "-"
 
 
-FLAME = "M0 -15 C 7 -7, 11 -2, 11 6 A11 11 0 0 1 -11 6 C -11 0, -5 -4, 0 -15 Z"
-FLAME_IN = "M0 -4 C 4 0, 6 3, 6 7 A6 6 0 0 1 -6 7 C -6 4, -3 1, 0 -4 Z"
 WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+# ---------------------------------------------------------------- layout (matches build_header.py)
+W = 1000
+PAD = 20
+CW = 8.0              # px per character
+LH = 19.5             # px per line
+FS = 13.5
+LX, LCOLS = PAD, 56   # left column
+RX, RCOLS = 548, 54   # right column, same x as the header's info column
+
+
+def hdr(title, cols):
+    text = f"- {title} "
+    return [("text", text), ("dots", "-" * (cols - len(text)))]
+
+
+def kv(key, val, cols, lead=". "):
+    head = f"{lead}{key}:"
+    dots = max(2, cols - len(head) - len(val) - 2)
+    return [("key", head), ("dots", " " + "." * dots + " "), ("val", val)]
 
 
 def render(theme, stats):
@@ -151,107 +167,134 @@ def render(theme, stats):
     for d, n in cal:
         wd[d.weekday()] += n
 
-    W, H = 1000, 524
-    o = [f'<?xml version="1.0" encoding="UTF-8"?>',
+    rows = 20
+    H = int(PAD * 2 + rows * LH - 12)
+    o = ['<?xml version="1.0" encoding="UTF-8"?>',
          f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">',
          "<title>Contribution tracker</title>",
-         f'<rect width="{W}" height="{H}" fill="{c["bg"]}"/>']
+         "<style>",
+         f".info{{font-size:{FS}px;white-space:pre}}",
+         f".text{{fill:{c['text']}}} .key{{fill:{c['key']}}} .val{{fill:{c['val']}}} .dots{{fill:{c['dots']}}}",
+         "</style>",
+         f'<rect width="{W}" height="{H}" rx="15" fill="{c["bg"]}" stroke="{c["border"]}"/>']
 
-    def card(x, y, w, h):
-        o.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{c["card"]}" stroke="{c["border"]}"/>')
+    def base(row):
+        return PAD + 12 + row * LH
 
-    def t(x, y, s, size=12, fill=None, weight=400, anchor="start", extra=""):
-        o.append(f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{fill or c["text"]}" '
-                 f'text-anchor="{anchor}" {extra}>{escape(str(s))}</text>')
+    def line(x, row, parts, col=0):
+        """One line of text; every character is exactly CW wide, like the header."""
+        n = sum(len(t) for _, t in parts)
+        inner = "".join(f'<tspan fill="{k}">{escape(t)}</tspan>' if k.startswith("#")
+                        else f'<tspan class="{k}">{escape(t)}</tspan>' for k, t in parts)
+        o.append(f'<text class="info" x="{x + col * CW:.1f}" y="{base(row):.1f}" textLength="{n * CW:.1f}" '
+                 f'lengthAdjust="spacing" xml:space="preserve">{inner}</text>')
 
-    # ---- row 1: total, current streak, longest streak
+    def bar(x, row, col, width, fill, h=9):
+        """A bar sitting on the text line, `col` characters in, `width` px long."""
+        o.append(f'<rect x="{x + col * CW:.1f}" y="{base(row) - h + 0.5:.1f}" width="{max(0, width):.1f}" '
+                 f'height="{h}" rx="2" fill="{fill}"/>')
+
+    # ---------------- left column
     all_time = stats.get("all_time_total", stats.get("year_total", a["total"]))
     joined = stats.get("joined")
-    since = (f"since {_date(joined).strftime('%b')} {_date(joined).day}, {_date(joined).year}") if joined \
-        else f"{fmt(a['active_days'])} active days in the last year"
-    tw = (W - 24 - 24) / 3
-    xs = [12 + i * (tw + 12) for i in range(3)]
-    for x in xs:
-        card(x, 12, tw, 140)
-    t(xs[0] + 22, 46, "Total contributions", 13, c["muted"])
-    t(xs[0] + 22, 104, fmt(all_time), 48, weight=700)
-    t(xs[0] + 22, 132, since, 12, c["muted"])
+    since = f"{_date(joined).strftime('%b')} {_date(joined).day}, {_date(joined).year}" if joined else "-"
+    best_d, best_n = a["best_day"]
+    left = [
+        hdr("Contributions", LCOLS),
+        kv("Total", fmt(all_time), LCOLS),
+        kv("Since", since, LCOLS),
+        kv("Last 12 months", fmt(stats.get("year_total", a["total"])), LCOLS),
+        kv("Active days", f"{a['active_days']} / {a['days']}", LCOLS),
+        kv("Best day", f"{fmt(best_n)} {{{short(best_d)}}}", LCOLS),
+        [("dots", ".")],
+        hdr("Streaks", LCOLS),
+        kv("Current", f"{a['current']} days {{{rng(a['current_range'])}}}", LCOLS),
+        kv("Longest", f"{a['longest']} days {{{rng(a['longest_range'])}}}", LCOLS),
+        None,  # current streak as a share of the longest, drawn below
+        [("dots", ".")],
+        hdr("By weekday", LCOLS),
+    ]
+    for i, parts in enumerate(left):
+        if parts:
+            line(LX, i, parts)
 
-    o.append(f'<g transform="translate({xs[1] + 32},{40})"><path d="{FLAME}" fill="{c["flame"]}"/><path d="{FLAME_IN}" fill="{c["flame2"]}"/></g>')
-    t(xs[1] + 54, 46, "Current streak", 13, c["muted"])
-    t(xs[1] + 22, 94, f"{a['current']} days", 34, weight=700)
-    t(xs[1] + 22, 116, rng(a["current_range"]), 12, c["muted"])
-    bar_w = tw - 44
-    o.append(f'<rect x="{xs[1] + 22}" y="128" width="{bar_w}" height="6" rx="3" fill="{c["border"]}"/>')
-    frac = min(1, a["current"] / a["longest"]) if a["longest"] else 0
-    o.append(f'<rect x="{xs[1] + 22}" y="128" width="{bar_w * frac:.1f}" height="6" rx="3" fill="{c["flame"]}"/>')
+    label = ". Progress: "
+    share = a["current"] / a["longest"] if a["longest"] else 0
+    pct = f"{100 * share:.0f}%"
+    line(LX, 10, [("key", label.rstrip())])
+    track_w = (LCOLS - len(label) - len(pct) - 1) * CW
+    bar(LX, 10, len(label), track_w, c["track"])
+    bar(LX, 10, len(label), track_w * share, c["key"])
+    line(LX, 10, [("val", pct)], col=LCOLS - len(pct))
 
-    t(xs[2] + 22, 46, "Longest streak", 13, c["muted"])
-    t(xs[2] + 22, 94, f"{a['longest']} days", 34, weight=700)
-    t(xs[2] + 22, 116, rng(a["longest_range"]), 12, c["muted"])
-    o.append(f'<rect x="{xs[2] + 22}" y="128" width="{bar_w}" height="6" rx="3" fill="{c["hi"]}"/>')
-
-    # ---- row 2: weekly activity and weekday split
-    y2, h2 = 164, 204
-    wx, ww = 12, 612
-    card(wx, y2, ww, h2)
-    t(wx + 22, y2 + 32, "Weekly activity", 13, c["muted"])
-    t(wx + ww - 22, y2 + 32, "last 12 months", 11, c["muted"], anchor="end")
-    bx, by, bw_, bh = wx + 22, y2 + 52, ww - 44, 110
-    peak = max(v for _, v in wk) or 1
-    step = bw_ / len(wk)
-    for i, (d, v) in enumerate(wk):
-        h = max(2, v / peak * bh)
-        col = c["hi"] if v > peak * .7 else c["mid"] if v > peak * .2 else c["lo"]
-        o.append(f'<rect x="{bx + i * step + 1:.1f}" y="{by + bh - h:.1f}" width="{step - 2.4:.1f}" height="{h:.1f}" rx="1.5" fill="{col}"/>')
-    last = None
-    for i, (d, v) in enumerate(wk):
-        if d.month != last and d.day <= 7:
-            t(f"{bx + i * step:.1f}", by + bh + 20, d.strftime("%b"), 10, c["muted"])
-            last = d.month
-
-    wx2 = wx + ww + 12
-    ww2 = W - 12 - wx2
-    card(wx2, y2, ww2, h2)
-    t(wx2 + 22, y2 + 32, "By weekday", 13, c["muted"])
     wmax = max(wd) or 1
+    full = (LCOLS - 6 - 7) * CW
     for i, (nm, v) in enumerate(zip(WEEKDAYS, wd)):
-        y = y2 + 52 + i * 21
-        t(wx2 + 22, y + 11, nm, 12, c["muted"])
-        ln = (ww2 - 130) * v / wmax
-        o.append(f'<rect x="{wx2 + 62}" y="{y}" width="{ln:.1f}" height="13" rx="3" fill="{c["hi"] if v == wmax else c["lo"]}"/>')
-        t(f"{wx2 + 68 + ln:.1f}", y + 11, fmt(v), 11, c["text"] if v == wmax else c["muted"])
+        row = 13 + i
+        val = fmt(v)
+        line(LX, row, [("key", f". {nm}")])
+        bar(LX, row, 6, full * v / wmax, c["levels"][3] if v == wmax else c["levels"][2])
+        line(LX, row, [("val" if v == wmax else "text", val)], col=LCOLS - len(val))
 
-    # ---- row 3: languages and stat chips
-    y3, h3 = y2 + h2 + 12, 136
-    card(12, y3, W - 24, h3)
-    t(34, y3 + 32, "Languages", 13, c["muted"])
+    # ---------------- right column
+    line(RX, 0, hdr("Weekly activity", RCOLS))
+    cw_ = RCOLS * CW
+    top, bottom = base(0) + 12, base(5) + 2
+    peak = max(v for _, v in wk) or 1
+    step = cw_ / len(wk)
+    nz = sorted(v for _, v in wk if v > 0)
+    cuts = [nz[int(len(nz) * q) - 1] for q in (0.25, 0.5, 0.75)] if len(nz) >= 4 else [1, 2, 3]
+    for i, (d, v) in enumerate(wk):
+        h = max(2, v / peak * (bottom - top))
+        col = c["track"] if v <= 0 else c["levels"][sum(v > k for k in cuts)]
+        o.append(f'<rect x="{RX + i * step + 0.6:.1f}" y="{bottom - h:.1f}" width="{step - 2:.1f}" '
+                 f'height="{h:.1f}" rx="1" fill="{col}"/>')
+    last, last_x = None, -99
+    for i, (d, v) in enumerate(wk):
+        x = RX + i * step
+        if d.month != last and d.day <= 7:
+            last = d.month
+            if x - last_x >= 4 * CW and x + 3 * CW <= RX + cw_:
+                o.append(f'<text class="info dots" x="{x:.1f}" y="{base(6):.1f}" textLength="{3 * CW}" '
+                         f'lengthAdjust="spacing">{d.strftime("%b")}</text>')
+                last_x = x
+
+    line(RX, 8, hdr("Languages", RCOLS))
     langs = stats.get("languages") or []
     if langs:
         tot = sum(l[2] for l in langs) or 1
-        lw = W - 68
-        o.append(f'<clipPath id="lc-{theme}"><rect x="34" y="{y3 + 44}" width="{lw}" height="12" rx="6"/></clipPath>')
-        x = 34
+        x = RX
         for i, (name, col, size) in enumerate(langs):
-            seg = lw * size / tot
-            o.append(f'<rect x="{x:.1f}" y="{y3 + 44}" width="{seg + 0.6:.1f}" height="12" fill="{col or FALLBACK_COLORS[i % 6]}" clip-path="url(#lc-{theme})"/>')
+            seg = cw_ * size / tot
+            o.append(f'<rect x="{x:.1f}" y="{base(9) - 9.5:.1f}" width="{max(0, seg - 2):.1f}" height="9" rx="2" '
+                     f'fill="{col or FALLBACK_COLORS[i % 6]}"/>')
             x += seg
-        for i, (name, col, size) in enumerate(langs):
-            lx = 34 + i * (lw / 6)
-            o.append(f'<circle cx="{lx + 4:.1f}" cy="{y3 + 78}" r="4" fill="{col or FALLBACK_COLORS[i % 6]}"/>')
-            t(f"{lx + 15:.1f}", y3 + 82, f"{name} {100 * size / tot:.0f}%", 12)
+        half = (RCOLS - 3) // 2
+        for i in range(0, len(langs), 2):
+            parts = []
+            for j, (name, col, size) in enumerate(langs[i:i + 2]):
+                if j:
+                    parts.append(("dots", " | "))
+                parts.append((col or FALLBACK_COLORS[(i + j) % 6], "■ "))
+                parts += kv(name, f"{100 * size / tot:.0f}%", (half if j == 0 else RCOLS - half - 3) - 2, lead="")
+            line(RX, 10 + i // 2, parts)
     else:
-        t(34, y3 + 66, "Appears after the next stats run", 12, c["muted"])
-    chips = [("Commits", fmt(stats.get("year_commits", "n/a"))), ("PRs", fmt(stats.get("prs", "n/a"))),
-             ("Repos", fmt(stats.get("contributed_repos", stats.get("contributed", "n/a")))),
-             ("Stars", fmt(stats.get("stars", 0))), ("Active days", f"{a['active_days']}")]
-    x = 34
-    for k, v in chips:
-        w_ = 26 + (len(k) + len(v) + 2) * 6.6
-        o.append(f'<rect x="{x:.1f}" y="{y3 + 98}" width="{w_:.1f}" height="26" rx="13" fill="{c["bg"]}" stroke="{c["border"]}"/>')
-        t(f"{x + 13:.1f}", y3 + 115, k, 11, c["muted"])
-        t(f"{x + 13 + (len(k) + 1) * 6.4:.1f}", y3 + 115, v, 11, weight=700)
-        x += w_ + 8
+        line(RX, 10, [("dots", ". appears after the next stats run")])
+
+    line(RX, 14, hdr("Activity", RCOLS))
+    half = 26
+
+    def pair(k1, v1, k2, v2):
+        return kv(k1, v1, half) + [("dots", " | ")] + kv(k2, v2, RCOLS - half - 3, lead="")
+
+    line(RX, 15, pair("Commits", fmt(stats.get("year_commits", "n/a")), "PRs", fmt(stats.get("prs", "n/a"))))
+    line(RX, 16, pair("Issues", fmt(stats.get("issues", "n/a")),
+                      "Repos touched", fmt(stats.get("contributed_repos", stats.get("contributed", "n/a")))))
+    line(RX, 17, [("dots", ".")])
+    sw = cw_ / len(PALETTE[0])
+    for r, cols in enumerate(PALETTE):
+        for i, col in enumerate(cols):
+            o.append(f'<rect x="{RX + i * sw:.1f}" y="{base(18 + r) - 13:.1f}" width="{sw:.1f}" height="{LH:.1f}" fill="{col}"/>')
 
     o.append("</svg>")
     return "\n".join(o) + "\n"
@@ -262,6 +305,6 @@ def build(stats):
         print("no calendar data yet; skipping tracker")
         return
     for theme in ("dark", "light"):
-        with open(os.path.join(HERE, f"tracker_{theme}.svg"), "w") as f:
+        with open(os.path.join(HERE, f"tracker_{theme}.svg"), "w", encoding="utf-8") as f:
             f.write(render(theme, stats))
     print("wrote tracker_dark.svg and tracker_light.svg")
