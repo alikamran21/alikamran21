@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="151" viewBox="0 0 1000 151" font-family="Consolas, 'Liberation Mono', Menlo, 'DejaVu Sans Mono', monospace">
+<title>Work and stack</title>
+<style>
+.info{font-size:13.5px;white-space:pre}
+.text{fill:#c9d1d9} .key{fill:#ffa657} .val{fill:#a5d6ff} .dots{fill:#616e7f}
+</style>
+<rect width="1000" height="151" rx="15" fill="#161b22" stroke="#30363d"/>
+<text class="info" x="20" y="32.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Work </tspan><tspan class="dots">-------------------------------------------------</tspan></text>
+<text class="info" x="20" y="51.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Foxy Audit:</tspan><tspan class="dots"> ...................................... </tspan><tspan class="val">CTO</tspan></text>
+<text class="info" x="20" y="71.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. InvoiceMate:</tspan><tspan class="dots"> ......................... </tspan><tspan class="val">DevOps Engineer</tspan></text>
+<text class="info" x="20" y="90.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. coffeebean:</tspan><tspan class="dots"> ............................ </tspan><tspan class="val">UEFN game dev</tspan></text>
+<text class="info" x="20" y="110.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. GIKI:</tspan><tspan class="dots"> ....................... </tspan><tspan class="val">Cyber Security, 3rd year</tspan></text>
+<text class="info" x="548" y="32.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Stack </tspan><tspan class="dots">----------------------------------------------</tspan></text>
+<text class="info" x="548" y="51.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Languages:</tspan><tspan class="dots"> .......... </tspan><tspan class="val">C, C++, Java, Python, Assembly</tspan></text>
+<text class="info" x="548" y="71.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Web:</tspan><tspan class="dots"> ............. </tspan><tspan class="val">HTML, CSS, JavaScript, TypeScript</tspan></text>
+<text class="info" x="548" y="90.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Data:</tspan><tspan class="dots"> ................................ </tspan><tspan class="val">SQL, PL/pgSQL</tspan></text>
+<text class="info" x="548" y="110.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. DevOps:</tspan><tspan class="dots"> ................. </tspan><tspan class="val">Git, GitHub Actions, Linux</tspan></text>
+<text class="info" x="548" y="129.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Tools:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">VS Code, UEFN</tspan></text>
+</svg>

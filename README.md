@@ -7,11 +7,14 @@
 </a>
 </div>
 
-## Tech stack
+## Work and stack
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=c,cpp,java,py,html,css,git,github,linux,vscode&theme=dark" alt="C, C++, Java, Python, HTML, CSS, Git, GitHub, Linux, VS Code" />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="stack_light.svg">
+  <img alt="Work and stack" src="stack_dark.svg">
+</picture>
 
 </div>
 

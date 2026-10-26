@@ -13,6 +13,7 @@ import urllib.request
 from xml.sax.saxutils import escape
 
 import build_game
+import build_stack
 import build_tracker
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 INFO = [
     ("hdr", "ali@kamran"),
     ("kv", "OS", "Windows 11, Android, Ubuntu CLI"),
+    ("uptime",),
     ("kv", "Education", "Cyber Security, 3rd Year @ GIKI"),
     ("kv", "Role.DevOps", "DevOps Engineer @ InvoiceMate"),
     ("kv", "Role.CTO", "CTO @ Foxy Audit"),
@@ -117,6 +119,16 @@ def fetch_stats(user, token):
     }
 
 
+def uptime(joined):
+    """Time since joining GitHub, neofetch style: "6 years, 3 months"."""
+    if not joined:
+        return "n/a"
+    start, now = datetime.date.fromisoformat(joined), datetime.date.today()
+    months = (now.year - start.year) * 12 + now.month - start.month - (now.day < start.day)
+    y, m = divmod(months, 12)
+    return ", ".join(f"{n} {unit}{'s' if n != 1 else ''}" for n, unit in ((y, "year"), (m, "month")) if n) or "0 months"
+
+
 def fmt(n):
     return f"{n:,}" if isinstance(n, int) else str(n)
 
@@ -157,6 +169,8 @@ def build_lines(stats):
             rows.append([("text", text), ("dots", "-" * (INFO_COLS - len(text)))])
         elif kind == "kv":
             rows.append(kv_line(item[1], item[2]))
+        elif kind == "uptime":
+            rows.append(kv_line("Uptime", uptime(stats.get("joined"))))
         elif kind == "stats1":
             rows.append(two_col("Repos", f"{fmt(stats['repos'])} {{Contributed: {fmt(stats['contributed'])}}}",
                                 "Stars", fmt(stats["stars"]), split=34))
@@ -218,6 +232,7 @@ def main():
     print("wrote dark_mode.svg and light_mode.svg")
     build_tracker.build(stats)
     build_game.build(stats)
+    build_stack.build()
 
 
 if __name__ == "__main__":
