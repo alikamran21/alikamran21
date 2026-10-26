@@ -20,9 +20,9 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph-dark.svg?v=3">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg?v=3">
-  <img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg?v=3">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph-dark.svg?v=4">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg?v=4">
+  <img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/alikamran21/alikamran21/output/pacman-contribution-graph.svg?v=4">
 </picture>
 
 <br/><br/>
