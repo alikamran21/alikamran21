@@ -200,18 +200,29 @@ def decorate(path, logo_b64, cal):
     H = int((log_y[-1] + 8 if eaten else hud_y) + PAD + 2)
     dur = f"{d_new}ms"
 
-    def step(k):
-        """Animation that shows state k (k boxes eaten) only until the next bite."""
-        a = times[k - 1] if k > 0 else 0.0
-        b = times[k] if k < total else 1.0
-        if k == 0:
-            vv, kk = "1;0;0", f"0;{fnum(b)};1"
-        elif k == total:
-            vv, kk = "0;1;1", f"0;{fnum(a)};1"
+    def shown(a, b):
+        """(attribute, animation) that keep an element in the render tree only from a to b.
+
+        Hidden elements are display:none rather than transparent, so the browser
+        skips them entirely; drawing hundreds of invisible texts every frame is
+        what made the game lag."""
+        if a <= 0 and b >= 1:
+            return "", ""
+        if a <= 0:
+            vv, kk = "inline;none", f"0;{fnum(b)}"
+        elif b >= 1:
+            vv, kk = "none;inline", f"0;{fnum(a)}"
         else:
-            vv, kk = "0;1;0;0", f"0;{fnum(a)};{fnum(b)};1"
-        return (f'<animate attributeName="opacity" calcMode="discrete" dur="{dur}" repeatCount="indefinite" '
-                f'values="{vv}" keyTimes="{kk}"/></text>')
+            vv, kk = "none;inline;none", f"0;{fnum(a)};{fnum(b)}"
+        return ('display="none"' if a > 0 else "",
+                f'<animate attributeName="display" calcMode="discrete" dur="{dur}" repeatCount="indefinite" '
+                f'values="{vv}" keyTimes="{kk}"/>')
+
+    def step(line):
+        """Shows state k (k boxes eaten) only until the next bite; `line(k, attr)` draws it."""
+        for k in range(total + 1):
+            attr, anim = shown(times[k - 1] if k > 0 else 0.0, times[k] if k < total else 1.0)
+            o.append(line(k, attr).replace("</text>", anim + "</text>"))
 
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="{FONT}" data-decorated="1">',
@@ -245,9 +256,7 @@ def decorate(path, logo_b64, cal):
     o.append(f'<rect x="{fnum(x0)}" y="{fnum(hud_y - 8.5)}" width="0" height="9" rx="2" fill="{c["bar"]}">'
              f'<animate attributeName="width" dur="{dur}" repeatCount="indefinite" '
              f'values="{";".join(fnum(w) for w in widths)}" keyTimes="{";".join(fnum(k) for k in kts)}"/></rect>')
-    for k in range(total + 1):
-        o.append(text(W - PAD, hud_y, [("val", f"{k} / {total}")], anchor="end",
-                      extra=f'opacity="{1 if k == 0 else 0}"').replace("</text>", step(k)))
+    step(lambda k, attr: text(W - PAD, hud_y, [("val", f"{k} / {total}")], anchor="end", extra=attr))
 
     # score, chomp log (newest bite on top) and a "+N" pop-up over every box as it is eaten
     score = 0
@@ -255,21 +264,25 @@ def decorate(path, logo_b64, cal):
         best = max(n for _, n in eaten.values())
         life = POP * 1000 / d_new
         entries = [(0.0, [("dots", "> "), ("text", "waiting for Pac-Man...")])]
-        for k in range(total + 1):
-            if k:
-                _, col, row = events[k - 1]
-                day, n = eaten[(col, row)]
-                score += n
-                verb = "GULP" if n == best else VERBS[k % len(VERBS)]
-                when = f"{day:%a}, {day:%b} {day.day} {day.year}" if day else "?"
-                left = [("dots", "> "), ("key", verb), ("dots", " . "), ("text", when)] +                     ([("key", " best day!")] if n == best else [])
-                val = f"+{n:,}"
-                entries.append((times[k - 1], left + [("dots", " " + "." * max(2, COLS - sum(len(t) for _, t in left) - len(val) - 2) + " "),
-                                                      ("val", val)]))
-            head = "- Chomp log "
-            right = [("key", "Score:"), ("val", f" {score:,}")]
-            parts = [("text", head), ("dots", "-" * (COLS - len(head) - sum(len(t) for _, t in right) - 1) + " ")] + right
-            o.append(text(PAD, log_hdr, parts, extra=f'opacity="{1 if k == 0 else 0}"').replace("</text>", step(k)))
+        scores = [0]
+        for k, (t, col, row) in enumerate(events, 1):
+            day, n = eaten[(col, row)]
+            scores.append(scores[-1] + n)
+            verb = "GULP" if n == best else VERBS[k % len(VERBS)]
+            when = f"{day:%a}, {day:%b} {day.day} {day.year}" if day else "?"
+            left = [("dots", "> "), ("key", verb), ("dots", " . "), ("text", when)]
+            if n == best:
+                left.append(("key", " best day!"))
+            val = f"+{n:,}"
+            dots = "." * max(2, COLS - sum(len(x) for _, x in left) - len(val) - 2)
+            entries.append((t * sc, left + [("dots", f" {dots} "), ("val", val)]))
+        score = scores[-1]
+
+        def score_line(k, attr):
+            head, right = "- Chomp log ", [("key", "Score:"), ("val", f" {scores[k]:,}")]
+            dashes = "-" * (COLS - len(head) - sum(len(x) for _, x in right) - 1)
+            return text(PAD, log_hdr, [("text", head), ("dots", dashes + " ")] + right, extra=attr)
+        step(score_line)
 
         # each line enters at the top, slides one slot down per later bite, and fades out off the bottom
         fade = [1, .8, .62, .46, .32]
@@ -298,9 +311,10 @@ def decorate(path, logo_b64, cal):
             ys.append(ys[-1])
             ops.append(ops[-1])
             kt = [min(1.0, k) for k in kt]
-            o.append(text(PAD, log_y[0], parts, extra=f'opacity="{ops[0]}"').replace(
+            attr, anim = shown(t0, kt[-2] if i + LOG < len(at) else 1.0)
+            o.append(text(PAD, log_y[0], parts, extra=f'opacity="{ops[0]}" {attr}').replace(
                 "</text>",
-                f'<animate attributeName="y" dur="{dur}" repeatCount="indefinite" values="{";".join(fnum(y) for y in ys)}" '
+                anim + f'<animate attributeName="y" dur="{dur}" repeatCount="indefinite" values="{";".join(fnum(y) for y in ys)}" '
                 f'keyTimes="{";".join(fnum(k) for k in kt)}"/>'
                 f'<animate attributeName="opacity" dur="{dur}" repeatCount="indefinite" values="{";".join(fnum(v) for v in ops)}" '
                 f'keyTimes="{";".join(fnum(k) for k in kt)}"/></text>'))
@@ -313,9 +327,10 @@ def decorate(path, logo_b64, cal):
             oy = by + (15 + row * 22 + 10 - vy) * s - 6
             big = n == best
             k_ = [t * sc, t * sc + life * .12, t * sc + life * .7, t * sc + life]
+            attr, anim = shown(k_[0], k_[3])
             o.append(f'<text x="{fnum(ox)}" y="{fnum(oy)}" font-size="{15 if big else 12}" font-weight="700" '
                      f'text-anchor="middle" fill="{c["key"] if big else c["val"]}" stroke="{c["bg"]}" stroke-width="3" '
-                     f'paint-order="stroke" opacity="0">{"+" + format(n, ",") + (" best day!" if big else "")}'
+                     f'paint-order="stroke" opacity="0" {attr}>{"+" + format(n, ",") + (" best day!" if big else "")}{anim}'
                      f'<animate attributeName="opacity" dur="{dur}" repeatCount="indefinite" values="0;0;1;1;0;0" '
                      f'keyTimes="0;{";".join(fnum(k) for k in k_)};1"/>'
                      f'<animate attributeName="y" dur="{dur}" repeatCount="indefinite" '
