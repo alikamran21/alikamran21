@@ -7,41 +7,41 @@
 </style>
 <rect width="1000" height="418" rx="15" fill="#f6f8fa" stroke="#d0d7de"/>
 <text class="info" x="20.0" y="32.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Contributions </tspan><tspan class="dots">----------------------------------------</tspan></text>
-<text class="info" x="20.0" y="51.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Total:</tspan><tspan class="dots"> ......................................... </tspan><tspan class="val">5,883</tspan></text>
+<text class="info" x="20.0" y="51.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Total:</tspan><tspan class="dots"> ......................................... </tspan><tspan class="val">5,886</tspan></text>
 <text class="info" x="20.0" y="71.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Since:</tspan><tspan class="dots"> ................................... </tspan><tspan class="val">Jul 4, 2020</tspan></text>
-<text class="info" x="20.0" y="90.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Last 12 months:</tspan><tspan class="dots"> ................................ </tspan><tspan class="val">5,797</tspan></text>
-<text class="info" x="20.0" y="110.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Active days:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">159 / 366</tspan></text>
+<text class="info" x="20.0" y="90.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Last 12 months:</tspan><tspan class="dots"> ................................ </tspan><tspan class="val">5,800</tspan></text>
+<text class="info" x="20.0" y="110.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Active days:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">160 / 366</tspan></text>
 <text class="info" x="20.0" y="129.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Best day:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">420 {Sep 20}</tspan></text>
 <text class="info" x="20.0" y="149.0" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
 <text class="info" x="20.0" y="168.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Streaks </tspan><tspan class="dots">----------------------------------------------</tspan></text>
-<text class="info" x="20.0" y="188.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Current:</tspan><tspan class="dots"> .................... </tspan><tspan class="val">7 days {Oct 19 - Oct 25}</tspan></text>
+<text class="info" x="20.0" y="188.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Current:</tspan><tspan class="dots"> .................... </tspan><tspan class="val">8 days {Oct 19 - Oct 26}</tspan></text>
 <text class="info" x="20.0" y="207.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Longest:</tspan><tspan class="dots"> ................... </tspan><tspan class="val">23 days {Jul 26 - Aug 17}</tspan></text>
 <text class="info" x="20.0" y="246.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
 <text class="info" x="20.0" y="266.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- By weekday </tspan><tspan class="dots">-------------------------------------------</tspan></text>
 <text class="info" x="20.0" y="227.0" textLength="88.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Progress:</tspan></text>
 <rect x="116.0" y="218.5" width="320.0" height="9" rx="2" fill="#e1e4e8"/>
-<rect x="116.0" y="218.5" width="97.4" height="9" rx="2" fill="#953800"/>
-<text class="info" x="444.0" y="227.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">30%</tspan></text>
+<rect x="116.0" y="218.5" width="111.3" height="9" rx="2" fill="#953800"/>
+<text class="info" x="444.0" y="227.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">35%</tspan></text>
 <text class="info" x="20.0" y="285.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Mon</tspan></text>
 <rect x="68.0" y="277.0" width="344.0" height="9" rx="2" fill="#216e39"/>
-<text class="info" x="428.0" y="285.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">1,040</tspan></text>
+<text class="info" x="428.0" y="285.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">1,043</tspan></text>
 <text class="info" x="20.0" y="305.0" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Tue</tspan></text>
-<rect x="68.0" y="296.5" width="309.3" height="9" rx="2" fill="#30a14e"/>
+<rect x="68.0" y="296.5" width="308.4" height="9" rx="2" fill="#30a14e"/>
 <text class="info" x="444.0" y="305.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">935</tspan></text>
 <text class="info" x="20.0" y="324.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Wed</tspan></text>
-<rect x="68.0" y="316.0" width="254.0" height="9" rx="2" fill="#30a14e"/>
+<rect x="68.0" y="316.0" width="253.3" height="9" rx="2" fill="#30a14e"/>
 <text class="info" x="444.0" y="324.5" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">768</tspan></text>
 <text class="info" x="20.0" y="344.0" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Thu</tspan></text>
-<rect x="68.0" y="335.5" width="231.2" height="9" rx="2" fill="#30a14e"/>
+<rect x="68.0" y="335.5" width="230.5" height="9" rx="2" fill="#30a14e"/>
 <text class="info" x="444.0" y="344.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">699</tspan></text>
 <text class="info" x="20.0" y="363.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Fri</tspan></text>
-<rect x="68.0" y="355.0" width="263.3" height="9" rx="2" fill="#30a14e"/>
+<rect x="68.0" y="355.0" width="262.5" height="9" rx="2" fill="#30a14e"/>
 <text class="info" x="444.0" y="363.5" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">796</tspan></text>
 <text class="info" x="20.0" y="383.0" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Sat</tspan></text>
-<rect x="68.0" y="374.5" width="230.2" height="9" rx="2" fill="#30a14e"/>
+<rect x="68.0" y="374.5" width="229.6" height="9" rx="2" fill="#30a14e"/>
 <text class="info" x="444.0" y="383.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">696</tspan></text>
 <text class="info" x="20.0" y="402.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Sun</tspan></text>
-<rect x="68.0" y="394.0" width="285.5" height="9" rx="2" fill="#30a14e"/>
+<rect x="68.0" y="394.0" width="284.6" height="9" rx="2" fill="#30a14e"/>
 <text class="info" x="444.0" y="402.5" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">863</tspan></text>
 <text class="info" x="548.0" y="32.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Weekly activity </tspan><tspan class="dots">------------------------------------</tspan></text>
 <rect x="548.6" y="129.5" width="6.2" height="2.0" rx="1" fill="#e1e4e8"/>
@@ -110,18 +110,18 @@
 <text class="info dots" x="914.8" y="149.0" textLength="24.0" lengthAdjust="spacing">Sep</text>
 <text class="info dots" x="947.4" y="149.0" textLength="24.0" lengthAdjust="spacing">Oct</text>
 <text class="info" x="548.0" y="188.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Languages </tspan><tspan class="dots">------------------------------------------</tspan></text>
-<rect x="548.0" y="198.0" width="127.5" height="9" rx="2" fill="#e34c26"/>
-<rect x="677.5" y="198.0" width="97.3" height="9" rx="2" fill="#f1e05a"/>
-<rect x="776.8" y="198.0" width="60.2" height="9" rx="2" fill="#3572A5"/>
-<rect x="839.0" y="198.0" width="59.4" height="9" rx="2" fill="#f34b7d"/>
-<rect x="900.5" y="198.0" width="53.9" height="9" rx="2" fill="#3178c6"/>
-<rect x="956.3" y="198.0" width="21.7" height="9" rx="2" fill="#336790"/>
+<rect x="548.0" y="198.0" width="127.1" height="9" rx="2" fill="#e34c26"/>
+<rect x="677.1" y="198.0" width="97.0" height="9" rx="2" fill="#f1e05a"/>
+<rect x="776.1" y="198.0" width="61.4" height="9" rx="2" fill="#3572A5"/>
+<rect x="839.5" y="198.0" width="59.2" height="9" rx="2" fill="#f34b7d"/>
+<rect x="900.7" y="198.0" width="53.7" height="9" rx="2" fill="#3178c6"/>
+<rect x="956.4" y="198.0" width="21.6" height="9" rx="2" fill="#336790"/>
 <text class="info" x="548.0" y="227.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan fill="#e34c26">■ </tspan><tspan class="key">HTML:</tspan><tspan class="dots"> ............. </tspan><tspan class="val">30%</tspan><tspan class="dots"> | </tspan><tspan fill="#f1e05a">■ </tspan><tspan class="key">JavaScript:</tspan><tspan class="dots"> ........ </tspan><tspan class="val">23%</tspan></text>
-<text class="info" x="548.0" y="246.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan fill="#3572A5">■ </tspan><tspan class="key">Python:</tspan><tspan class="dots"> ........... </tspan><tspan class="val">14%</tspan><tspan class="dots"> | </tspan><tspan fill="#f34b7d">■ </tspan><tspan class="key">C++:</tspan><tspan class="dots"> ............... </tspan><tspan class="val">14%</tspan></text>
+<text class="info" x="548.0" y="246.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan fill="#3572A5">■ </tspan><tspan class="key">Python:</tspan><tspan class="dots"> ........... </tspan><tspan class="val">15%</tspan><tspan class="dots"> | </tspan><tspan fill="#f34b7d">■ </tspan><tspan class="key">C++:</tspan><tspan class="dots"> ............... </tspan><tspan class="val">14%</tspan></text>
 <text class="info" x="548.0" y="266.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan fill="#3178c6">■ </tspan><tspan class="key">TypeScript:</tspan><tspan class="dots"> ....... </tspan><tspan class="val">13%</tspan><tspan class="dots"> | </tspan><tspan fill="#336790">■ </tspan><tspan class="key">PLpgSQL:</tspan><tspan class="dots"> ............ </tspan><tspan class="val">5%</tspan></text>
 <text class="info" x="548.0" y="305.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Activity </tspan><tspan class="dots">-------------------------------------------</tspan></text>
-<text class="info" x="548.0" y="324.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Commits:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">5,752</tspan><tspan class="dots"> | </tspan><tspan class="key">PRs:</tspan><tspan class="dots"> ................. </tspan><tspan class="val">35</tspan></text>
-<text class="info" x="548.0" y="344.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Issues:</tspan><tspan class="dots"> .............. </tspan><tspan class="val">0</tspan><tspan class="dots"> | </tspan><tspan class="key">Repos touched:</tspan><tspan class="dots"> ....... </tspan><tspan class="val">52</tspan></text>
+<text class="info" x="548.0" y="324.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Commits:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">5,755</tspan><tspan class="dots"> | </tspan><tspan class="key">PRs:</tspan><tspan class="dots"> ................. </tspan><tspan class="val">35</tspan></text>
+<text class="info" x="548.0" y="344.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Issues:</tspan><tspan class="dots"> .............. </tspan><tspan class="val">0</tspan><tspan class="dots"> | </tspan><tspan class="key">Repos touched:</tspan><tspan class="dots"> ....... </tspan><tspan class="val">53</tspan></text>
 <text class="info" x="548.0" y="363.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
 <rect x="548.0" y="370.0" width="54.0" height="19.5" fill="#da3633"/>
 <rect x="602.0" y="370.0" width="54.0" height="19.5" fill="#db6d28"/>
