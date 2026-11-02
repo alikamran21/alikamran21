@@ -374,6 +374,7 @@
 <rect x="943.77358" y="192.90566" width="15.11321" height="15.11321" rx="3" fill="#dde3ea"/>
 <rect x="943.77358" y="211.01887" width="15.11321" height="15.11321" rx="3" fill="#dde3ea"/>
 <rect x="961.88679" y="102.33962" width="15.11321" height="15.11321" rx="3" fill="#dde3ea"/>
+<rect x="961.88679" y="120.45283" width="15.11321" height="15.11321" rx="3" fill="#dde3ea"/>
 <text class="info" x="889.43396" y="245.13208" text-anchor="start" textLength="24.0" lengthAdjust="spacing" xml:space="preserve" ><tspan class="dots">Oct</tspan></text>
 <text class="info" x="816.98113" y="245.13208" text-anchor="start" textLength="24.0" lengthAdjust="spacing" xml:space="preserve" ><tspan class="dots">Sep</tspan></text>
 <text class="info" x="726.41509" y="245.13208" text-anchor="start" textLength="24.0" lengthAdjust="spacing" xml:space="preserve" ><tspan class="dots">Aug</tspan></text>
