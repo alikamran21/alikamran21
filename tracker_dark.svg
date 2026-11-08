@@ -7,21 +7,21 @@
 </style>
 <rect width="1000" height="418" rx="15" fill="#161b22" stroke="#30363d"/>
 <text class="info" x="20.0" y="32.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Contributions </tspan><tspan class="dots">----------------------------------------</tspan></text>
-<text class="info" x="20.0" y="51.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Total:</tspan><tspan class="dots"> ......................................... </tspan><tspan class="val">6,584</tspan></text>
+<text class="info" x="20.0" y="51.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Total:</tspan><tspan class="dots"> ......................................... </tspan><tspan class="val">6,618</tspan></text>
 <text class="info" x="20.0" y="71.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Since:</tspan><tspan class="dots"> ................................... </tspan><tspan class="val">Jul 4, 2020</tspan></text>
-<text class="info" x="20.0" y="90.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Last 12 months:</tspan><tspan class="dots"> ................................ </tspan><tspan class="val">6,498</tspan></text>
-<text class="info" x="20.0" y="110.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Active days:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">171 / 371</tspan></text>
+<text class="info" x="20.0" y="90.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Last 12 months:</tspan><tspan class="dots"> ................................ </tspan><tspan class="val">6,532</tspan></text>
+<text class="info" x="20.0" y="110.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Active days:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">172 / 365</tspan></text>
 <text class="info" x="20.0" y="129.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Best day:</tspan><tspan class="dots"> ............................... </tspan><tspan class="val">420 {Sep 20}</tspan></text>
 <text class="info" x="20.0" y="149.0" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
 <text class="info" x="20.0" y="168.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Streaks </tspan><tspan class="dots">----------------------------------------------</tspan></text>
-<text class="info" x="20.0" y="188.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Current:</tspan><tspan class="dots"> ...................... </tspan><tspan class="val">6 days {Nov 2 - Nov 7}</tspan></text>
+<text class="info" x="20.0" y="188.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Current:</tspan><tspan class="dots"> ...................... </tspan><tspan class="val">7 days {Nov 2 - Nov 8}</tspan></text>
 <text class="info" x="20.0" y="207.5" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Longest:</tspan><tspan class="dots"> ................... </tspan><tspan class="val">23 days {Jul 26 - Aug 17}</tspan></text>
 <text class="info" x="20.0" y="246.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
 <text class="info" x="20.0" y="266.0" textLength="448.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- By weekday </tspan><tspan class="dots">-------------------------------------------</tspan></text>
 <text class="info" x="20.0" y="227.0" textLength="88.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Progress:</tspan></text>
 <rect x="116.0" y="218.5" width="320.0" height="9" rx="2" fill="#21262d"/>
-<rect x="116.0" y="218.5" width="83.5" height="9" rx="2" fill="#ffa657"/>
-<text class="info" x="444.0" y="227.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">26%</tspan></text>
+<rect x="116.0" y="218.5" width="97.4" height="9" rx="2" fill="#ffa657"/>
+<text class="info" x="444.0" y="227.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">30%</tspan></text>
 <text class="info" x="20.0" y="285.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Mon</tspan></text>
 <rect x="68.0" y="277.0" width="344.0" height="9" rx="2" fill="#39d353"/>
 <text class="info" x="428.0" y="285.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="val">1,213</tspan></text>
@@ -38,77 +38,76 @@
 <rect x="68.0" y="355.0" width="244.7" height="9" rx="2" fill="#26a641"/>
 <text class="info" x="444.0" y="363.5" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">863</tspan></text>
 <text class="info" x="20.0" y="383.0" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Sat</tspan></text>
-<rect x="68.0" y="374.5" width="217.8" height="9" rx="2" fill="#26a641"/>
-<text class="info" x="444.0" y="383.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">768</tspan></text>
+<rect x="68.0" y="374.5" width="223.8" height="9" rx="2" fill="#26a641"/>
+<text class="info" x="444.0" y="383.0" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">789</tspan></text>
 <text class="info" x="20.0" y="402.5" textLength="40.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Sun</tspan></text>
-<rect x="68.0" y="394.0" width="244.7" height="9" rx="2" fill="#26a641"/>
-<text class="info" x="444.0" y="402.5" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">863</tspan></text>
+<rect x="68.0" y="394.0" width="248.4" height="9" rx="2" fill="#26a641"/>
+<text class="info" x="444.0" y="402.5" textLength="24.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">876</tspan></text>
 <text class="info" x="548.0" y="32.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Weekly activity </tspan><tspan class="dots">------------------------------------</tspan></text>
 <rect x="548.6" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
-<rect x="556.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
-<rect x="564.9" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
-<rect x="573.1" y="127.8" width="6.2" height="3.7" rx="1" fill="#26a641"/>
-<rect x="581.2" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
-<rect x="589.4" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
+<rect x="556.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="564.9" y="127.8" width="6.2" height="3.7" rx="1" fill="#26a641"/>
+<rect x="573.1" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="581.2" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
+<rect x="589.4" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
 <rect x="597.5" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
 <rect x="605.7" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
-<rect x="613.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
-<rect x="622.0" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="630.1" y="129.3" width="6.2" height="2.2" rx="1" fill="#006d32"/>
+<rect x="613.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
+<rect x="622.0" y="129.3" width="6.2" height="2.2" rx="1" fill="#006d32"/>
+<rect x="630.1" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
 <rect x="638.3" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
 <rect x="646.4" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
-<rect x="654.6" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
+<rect x="654.6" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
 <rect x="662.7" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
 <rect x="670.9" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="679.0" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="687.2" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
-<rect x="695.3" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="703.5" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="679.0" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="687.2" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
+<rect x="695.3" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="703.5" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
 <rect x="711.6" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
 <rect x="719.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="727.9" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="736.1" y="129.1" width="6.2" height="2.4" rx="1" fill="#006d32"/>
-<rect x="744.2" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
-<rect x="752.4" y="128.6" width="6.2" height="2.9" rx="1" fill="#006d32"/>
-<rect x="760.5" y="128.8" width="6.2" height="2.7" rx="1" fill="#006d32"/>
-<rect x="768.7" y="127.1" width="6.2" height="4.4" rx="1" fill="#26a641"/>
-<rect x="776.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
-<rect x="785.0" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="727.9" y="129.1" width="6.2" height="2.4" rx="1" fill="#006d32"/>
+<rect x="736.1" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="744.2" y="128.6" width="6.2" height="2.9" rx="1" fill="#006d32"/>
+<rect x="752.4" y="128.8" width="6.2" height="2.7" rx="1" fill="#006d32"/>
+<rect x="760.5" y="127.1" width="6.2" height="4.4" rx="1" fill="#26a641"/>
+<rect x="768.7" y="129.5" width="6.2" height="2.0" rx="1" fill="#21262d"/>
+<rect x="776.8" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<rect x="785.0" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
 <rect x="793.1" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="801.3" y="129.5" width="6.2" height="2.0" rx="1" fill="#0e4429"/>
-<rect x="809.4" y="127.5" width="6.2" height="4.0" rx="1" fill="#26a641"/>
-<rect x="817.6" y="128.1" width="6.2" height="3.4" rx="1" fill="#006d32"/>
-<rect x="825.7" y="119.4" width="6.2" height="12.1" rx="1" fill="#26a641"/>
-<rect x="833.9" y="125.3" width="6.2" height="6.2" rx="1" fill="#26a641"/>
-<rect x="842.0" y="89.2" width="6.2" height="42.3" rx="1" fill="#39d353"/>
-<rect x="850.2" y="87.5" width="6.2" height="44.0" rx="1" fill="#39d353"/>
-<rect x="858.3" y="67.2" width="6.2" height="64.3" rx="1" fill="#39d353"/>
-<rect x="866.5" y="91.0" width="6.2" height="40.5" rx="1" fill="#39d353"/>
-<rect x="874.6" y="95.3" width="6.2" height="36.2" rx="1" fill="#39d353"/>
-<rect x="882.8" y="121.7" width="6.2" height="9.8" rx="1" fill="#26a641"/>
-<rect x="890.9" y="107.9" width="6.2" height="23.6" rx="1" fill="#26a641"/>
-<rect x="899.1" y="109.8" width="6.2" height="21.7" rx="1" fill="#26a641"/>
-<rect x="907.2" y="105.6" width="6.2" height="25.9" rx="1" fill="#39d353"/>
-<rect x="915.4" y="121.1" width="6.2" height="10.4" rx="1" fill="#26a641"/>
-<rect x="923.5" y="44.0" width="6.2" height="87.5" rx="1" fill="#39d353"/>
-<rect x="931.7" y="109.6" width="6.2" height="21.9" rx="1" fill="#26a641"/>
-<rect x="939.8" y="85.6" width="6.2" height="45.9" rx="1" fill="#39d353"/>
-<rect x="948.0" y="92.9" width="6.2" height="38.6" rx="1" fill="#39d353"/>
-<rect x="956.1" y="63.8" width="6.2" height="67.7" rx="1" fill="#39d353"/>
-<rect x="964.3" y="75.6" width="6.2" height="55.9" rx="1" fill="#39d353"/>
-<rect x="972.4" y="116.0" width="6.2" height="15.5" rx="1" fill="#26a641"/>
-<text class="info dots" x="548.0" y="149.0" textLength="24.0" lengthAdjust="spacing">Nov</text>
-<text class="info dots" x="588.8" y="149.0" textLength="24.0" lengthAdjust="spacing">Dec</text>
-<text class="info dots" x="621.4" y="149.0" textLength="24.0" lengthAdjust="spacing">Jan</text>
-<text class="info dots" x="654.0" y="149.0" textLength="24.0" lengthAdjust="spacing">Feb</text>
-<text class="info dots" x="686.6" y="149.0" textLength="24.0" lengthAdjust="spacing">Mar</text>
-<text class="info dots" x="727.3" y="149.0" textLength="24.0" lengthAdjust="spacing">Apr</text>
-<text class="info dots" x="759.9" y="149.0" textLength="24.0" lengthAdjust="spacing">May</text>
-<text class="info dots" x="800.7" y="149.0" textLength="24.0" lengthAdjust="spacing">Jun</text>
-<text class="info dots" x="833.3" y="149.0" textLength="24.0" lengthAdjust="spacing">Jul</text>
-<text class="info dots" x="865.9" y="149.0" textLength="24.0" lengthAdjust="spacing">Aug</text>
-<text class="info dots" x="906.6" y="149.0" textLength="24.0" lengthAdjust="spacing">Sep</text>
-<text class="info dots" x="939.2" y="149.0" textLength="24.0" lengthAdjust="spacing">Oct</text>
+<rect x="801.3" y="127.5" width="6.2" height="4.0" rx="1" fill="#26a641"/>
+<rect x="809.4" y="128.1" width="6.2" height="3.4" rx="1" fill="#26a641"/>
+<rect x="817.6" y="119.4" width="6.2" height="12.1" rx="1" fill="#26a641"/>
+<rect x="825.7" y="125.3" width="6.2" height="6.2" rx="1" fill="#26a641"/>
+<rect x="833.9" y="89.2" width="6.2" height="42.3" rx="1" fill="#39d353"/>
+<rect x="842.0" y="87.5" width="6.2" height="44.0" rx="1" fill="#39d353"/>
+<rect x="850.2" y="67.2" width="6.2" height="64.3" rx="1" fill="#39d353"/>
+<rect x="858.3" y="91.0" width="6.2" height="40.5" rx="1" fill="#39d353"/>
+<rect x="866.5" y="95.3" width="6.2" height="36.2" rx="1" fill="#39d353"/>
+<rect x="874.6" y="121.7" width="6.2" height="9.8" rx="1" fill="#26a641"/>
+<rect x="882.8" y="107.9" width="6.2" height="23.6" rx="1" fill="#39d353"/>
+<rect x="890.9" y="109.8" width="6.2" height="21.7" rx="1" fill="#26a641"/>
+<rect x="899.1" y="105.6" width="6.2" height="25.9" rx="1" fill="#39d353"/>
+<rect x="907.2" y="121.1" width="6.2" height="10.4" rx="1" fill="#26a641"/>
+<rect x="915.4" y="44.0" width="6.2" height="87.5" rx="1" fill="#39d353"/>
+<rect x="923.5" y="109.6" width="6.2" height="21.9" rx="1" fill="#26a641"/>
+<rect x="931.7" y="85.6" width="6.2" height="45.9" rx="1" fill="#39d353"/>
+<rect x="939.8" y="92.9" width="6.2" height="38.6" rx="1" fill="#39d353"/>
+<rect x="948.0" y="63.8" width="6.2" height="67.7" rx="1" fill="#39d353"/>
+<rect x="956.1" y="75.6" width="6.2" height="55.9" rx="1" fill="#39d353"/>
+<rect x="964.3" y="113.8" width="6.2" height="17.7" rx="1" fill="#26a641"/>
+<rect x="972.4" y="129.5" width="6.2" height="2.0" rx="1" fill="#006d32"/>
+<text class="info dots" x="580.6" y="149.0" textLength="24.0" lengthAdjust="spacing">Dec</text>
+<text class="info dots" x="613.2" y="149.0" textLength="24.0" lengthAdjust="spacing">Jan</text>
+<text class="info dots" x="645.8" y="149.0" textLength="24.0" lengthAdjust="spacing">Feb</text>
+<text class="info dots" x="678.4" y="149.0" textLength="24.0" lengthAdjust="spacing">Mar</text>
+<text class="info dots" x="719.2" y="149.0" textLength="24.0" lengthAdjust="spacing">Apr</text>
+<text class="info dots" x="751.8" y="149.0" textLength="24.0" lengthAdjust="spacing">May</text>
+<text class="info dots" x="792.5" y="149.0" textLength="24.0" lengthAdjust="spacing">Jun</text>
+<text class="info dots" x="825.1" y="149.0" textLength="24.0" lengthAdjust="spacing">Jul</text>
+<text class="info dots" x="857.7" y="149.0" textLength="24.0" lengthAdjust="spacing">Aug</text>
+<text class="info dots" x="898.5" y="149.0" textLength="24.0" lengthAdjust="spacing">Sep</text>
+<text class="info dots" x="931.1" y="149.0" textLength="24.0" lengthAdjust="spacing">Oct</text>
 <text class="info" x="548.0" y="188.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Languages </tspan><tspan class="dots">------------------------------------------</tspan></text>
 <rect x="548.0" y="198.0" width="125.3" height="9" rx="2" fill="#e34c26"/>
 <rect x="675.3" y="198.0" width="95.6" height="9" rx="2" fill="#f1e05a"/>
@@ -120,7 +119,7 @@
 <text class="info" x="548.0" y="246.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan fill="#3572A5">■ </tspan><tspan class="key">Python:</tspan><tspan class="dots"> ........... </tspan><tspan class="val">16%</tspan><tspan class="dots"> | </tspan><tspan fill="#f34b7d">■ </tspan><tspan class="key">C++:</tspan><tspan class="dots"> ............... </tspan><tspan class="val">14%</tspan></text>
 <text class="info" x="548.0" y="266.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan fill="#3178c6">■ </tspan><tspan class="key">TypeScript:</tspan><tspan class="dots"> ....... </tspan><tspan class="val">13%</tspan><tspan class="dots"> | </tspan><tspan fill="#336790">■ </tspan><tspan class="key">PLpgSQL:</tspan><tspan class="dots"> ............ </tspan><tspan class="val">5%</tspan></text>
 <text class="info" x="548.0" y="305.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="text">- Activity </tspan><tspan class="dots">-------------------------------------------</tspan></text>
-<text class="info" x="548.0" y="324.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Commits:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">6,446</tspan><tspan class="dots"> | </tspan><tspan class="key">PRs:</tspan><tspan class="dots"> ................. </tspan><tspan class="val">41</tspan></text>
+<text class="info" x="548.0" y="324.5" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Commits:</tspan><tspan class="dots"> ......... </tspan><tspan class="val">6,480</tspan><tspan class="dots"> | </tspan><tspan class="key">PRs:</tspan><tspan class="dots"> ................. </tspan><tspan class="val">41</tspan></text>
 <text class="info" x="548.0" y="344.0" textLength="432.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="key">. Issues:</tspan><tspan class="dots"> .............. </tspan><tspan class="val">0</tspan><tspan class="dots"> | </tspan><tspan class="key">Repos touched:</tspan><tspan class="dots"> ....... </tspan><tspan class="val">55</tspan></text>
 <text class="info" x="548.0" y="363.5" textLength="8.0" lengthAdjust="spacing" xml:space="preserve"><tspan class="dots">.</tspan></text>
 <rect x="548.0" y="370.0" width="54.0" height="19.5" fill="#da3633"/>
